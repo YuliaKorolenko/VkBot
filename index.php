@@ -21,7 +21,7 @@ switch ($data->type) {
             'message' => "Hello, {$user_name}!",
             'peer_id' => $user_id,
             'access_token' => $token,
-            'v' => '5.103',
+            'v' => '5.131',
             'random_id' => '0'
         );
         $get_params = http_build_query($request_params);
