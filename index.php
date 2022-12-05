@@ -1,4 +1,7 @@
 <?php
+
+require_once 'global.php';
+
 if (!isset($_REQUEST)) {
     return;
 }
@@ -9,11 +12,13 @@ $token = 'vk1.a.EvF6oWbm7ViH2O6IfkkybNfOxMTU-RoUFV_q924BQNm6VlUFZBc1d8n25MOmdlvZ
 
 $data = json_decode(file_get_contents('php://input'));
 
+log_msg($data);
 switch ($data->type) {
     case 'confirmation':
         echo $confirmation_token;
         break;
     case 'message_new':
+        log_msg("1");
         $user_id = $data->object->message->from_id;
         $user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&access_token={$token}&v=5.103"));
         $user_name = $user_info->response[0]->first_name;
