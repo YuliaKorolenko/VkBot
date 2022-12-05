@@ -12,7 +12,8 @@ $token = 'vk1.a.EvF6oWbm7ViH2O6IfkkybNfOxMTU-RoUFV_q924BQNm6VlUFZBc1d8n25MOmdlvZ
 
 $data = json_decode(file_get_contents('php://input'));
 
-log_msg($data);
+log_msg("dat = " . $data->type);
+
 switch ($data->type) {
     case 'confirmation':
         echo $confirmation_token;
