@@ -29,7 +29,9 @@ switch ($data->type) {
         $user_name = $user_info->response[0]->first_name;
 
         $database = new Database();
+        log_msg("new Data");
         $db = $database->getConnection();
+        log_msg("Connection");
 
         if (create()) {
             echo 'Group created successfully.';
