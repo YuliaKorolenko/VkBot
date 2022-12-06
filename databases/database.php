@@ -5,7 +5,7 @@ class Database {
     private $host = "109.120.183.78";
     private $database_name = "event";
     private $username = "root";
-    private $password = "username";
+    private $password = "ubuntu";
     public $conn;
 
     public function getConnection(){
