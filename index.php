@@ -37,11 +37,11 @@ switch ($data->type) {
         $database = new Database();
         $db = $database->getConnection();
 
-        if(create()){
-            echo 'Employee created successfully.';
-        } else{
-            echo 'Employee could not be created.';
-        }
+//        if(create()){
+//            echo 'Employee created successfully.';
+//        } else{
+//            echo 'Employee could not be created.';
+//        }
 
         $request_params = array(
             'message' => "Hello, {$user_name}, я сделал!",
