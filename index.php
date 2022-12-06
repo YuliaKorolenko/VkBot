@@ -1,6 +1,9 @@
 <?php
 
 require_once 'global.php';
+include_once '../databases/database.php';
+include_once '../class/group.php';
+
 
 log_msg("1");
 
@@ -30,8 +33,18 @@ switch ($data->type) {
         $user_id = $data->object->message->from_id;
         $user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&access_token={$token}&v=5.103"));
         $user_name = $user_info->response[0]->first_name;
+
+        $database = new Database();
+        $db = $database->getConnection();
+
+        if(create()){
+            echo 'Employee created successfully.';
+        } else{
+            echo 'Employee could not be created.';
+        }
+
         $request_params = array(
-            'message' => "Hello, {$user_name}!",
+            'message' => "Hello, {$user_name}, я сделал!",
             'peer_id' => $user_id,
             'access_token' => $token,
             'v' => '5.103',
