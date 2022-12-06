@@ -3,7 +3,7 @@ require_once 'global.php';
 
 class Database {
     private $host = "22";
-    private $database_name = "phpapidb";
+    private $database_name = "event";
     private $username = "root";
     private $password = "ubuntu";
     public $conn;
