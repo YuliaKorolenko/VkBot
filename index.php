@@ -34,8 +34,8 @@ switch ($data->type) {
         $user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&access_token={$token}&v=5.103"));
         $user_name = $user_info->response[0]->first_name;
 
-        $database = new Database();
-        $db = $database->getConnection();
+//        $database = new Database();
+//        $db = $database->getConnection();
 
 //        if(create()){
 //            echo 'Employee created successfully.';
