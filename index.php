@@ -2,7 +2,7 @@
 
 require_once 'global.php';
 include_once 'databases/database.php';
-
+include_once 'class/group.php';
 
 
 if (!isset($_REQUEST)) {
@@ -31,9 +31,9 @@ switch ($data->type) {
         $database = new Database();
         $db = $database->getConnection();
 
-        if(create()){
+        if (create()) {
             echo 'Group created successfully.';
-        } else{
+        } else {
             echo 'Group could not be created.';
         }
 
