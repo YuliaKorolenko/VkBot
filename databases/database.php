@@ -4,8 +4,8 @@ require_once 'global.php';
 class Database {
     private $host = "109.120.183.78";
     private $database_name = "event";
-    private $username = "root";
-    private $password = "ubuntu";
+    private $username = "ubuntu";
+    private $password = "root";
     public $conn;
 
     public function getConnection(){
