@@ -39,6 +39,8 @@ switch ($data->type) {
             echo 'Group could not be created.';
         }
 
+        log_msg("sucess5");
+
         $request_params = array(
             'message' => "Hello, {$user_name}, я сделал!",
             'peer_id' => $user_id,

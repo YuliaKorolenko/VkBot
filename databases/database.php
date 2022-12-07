@@ -19,6 +19,7 @@ class Database {
         }catch(PDOException $exception){
             log_msg("Database could not be connected: " . $exception->getMessage());
         }
+        log_msg("sucess4");
         return $this->conn;
     }
 }
