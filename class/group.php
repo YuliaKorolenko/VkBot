@@ -23,11 +23,16 @@ class Group{
                         price = 0, 
                         created = '2012-06-01 02:12:30'";
 
+        log_msg("sql");
+
         $stmt = $this->conn->prepare($sqlQuery);
 
         if($stmt->execute()){
+            log_msg("true");
             return true;
         }
+
+        log_msg("false");
         return false;
     }
 
