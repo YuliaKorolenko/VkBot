@@ -1,5 +1,7 @@
 <?php
 
+require_once 'global.php';
+
 class Group{
     private $conn;
     private $db_table = "MyGroup";
@@ -10,6 +12,8 @@ class Group{
     }
 
     public function create(){
+        log_msg("In function create");
+
         $sqlQuery = "INSERT INTO 
                         ". $this->db_table ."
                     SET
