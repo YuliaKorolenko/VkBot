@@ -17,9 +17,9 @@ class Group{
         $sqlQuery = "INSERT INTO 
                         ". $this->db_table ."
                     SET
-                        id = 'bbbbbbbb', 
-                        name = 'ojpochemy', 
-                        reg_open = 1, 
+                        id = 'bbbaaaaa', 
+                        name = 'oj', 
+                        reg_open = 0, 
                         price = 0, 
                         created = '2012-06-01 02:12:30'";
 
