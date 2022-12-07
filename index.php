@@ -35,8 +35,8 @@ switch ($data->type) {
 
         $item = new Group($db);
 //        $data = json_decode(file_get_contents("php://input"));
-        $item->id = "llllllll";
-        $item->name = "message";
+        $item->id = $data->message;
+        $item->name = $data->message;
         $item->reg_open = 1;
         $item->price = 0;
         $item->created = date('Y-m-d H:i:s');
@@ -50,7 +50,7 @@ switch ($data->type) {
         log_msg("sucess5");
 
         $request_params = array(
-            'message' => "Ваша группа, {$user_name}, вот такая!",
+            'message' => "Ваша группа, {$user_name}, вот такая! {$item->created}",
             'peer_id' => $user_id,
             'access_token' => $token,
             'v' => '5.103',
