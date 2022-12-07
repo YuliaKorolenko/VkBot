@@ -25,7 +25,7 @@ class Group
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
                     (id, name, reg_open, price, created) 
-                    VALUES ('$this->id', '$this->name' , $this->reg_open, $this->price, $this->created);";
+                    VALUES ('$this->id', '$this->name' , $this->reg_open, $this->price, '$this->created');";
 
         log_msg($sqlQuery);
 
