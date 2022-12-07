@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS `MyGroup` (
     )ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `MyGroup` (`id`, `name`, `reg_open`, `price`, `created`) VALUES ('aaaaaaaa', 'MyFirstSanta', 1, 0, '2012-06-01 02:12:30');
+
 INSERT INTO
                         `MyGroup`
                     SET
