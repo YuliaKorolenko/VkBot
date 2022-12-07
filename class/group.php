@@ -19,7 +19,7 @@ class Group
 
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
-                    (`id`, `name`, `reg_open`, `price`, `created`) 
+                    (id, name, reg_open, price, created) 
                     VALUES ('aaaass', 'Santa', 0, 0, '2012-05-01 02:12:30');";
 
         log_msg("sql");
