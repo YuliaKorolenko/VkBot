@@ -17,13 +17,14 @@ class Group
     {
         log_msg("In function create");
 
+        log_msg("llllll");
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
                     (id, name, reg_open, price, created) 
-                    VALUES ('aaaass', 'Santa', 0, 0, '2012-05-01 02:12:30');";
+                    VALUES ('lkaassoo', 'Santa', 0, 0, '2012-04-01 02:12:30');";
 
-
-        log_msg("sql");
+        log_msg("here");
+        log_msg($sqlQuery);
 
         $stmt = $this->conn->prepare($sqlQuery);
 
