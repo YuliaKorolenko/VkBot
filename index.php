@@ -33,10 +33,10 @@ switch ($data->type) {
         $db = $database->getConnection();
         log_msg("Connection");
 
-        if (create()) {
-            echo 'Group created successfully.';
+        if (Group::create()) {
+            log_msg("Group created successfully.");
         } else {
-            echo 'Group could not be created.';
+            log_msg("Group could not be created.");
         }
 
         log_msg("sucess5");
