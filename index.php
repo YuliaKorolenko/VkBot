@@ -33,7 +33,9 @@ switch ($data->type) {
         $db = $database->getConnection();
         log_msg("Connection");
 
-        if (Group::create()) {
+        $item = new Group($db);
+
+        if ($item->create()) {
             log_msg("Group created successfully.");
         } else {
             log_msg("Group could not be created.");
