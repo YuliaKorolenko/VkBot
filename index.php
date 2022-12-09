@@ -17,7 +17,7 @@ $token = 'vk1.a.EvF6oWbm7ViH2O6IfkkybNfOxMTU-RoUFV_q924BQNm6VlUFZBc1d8n25MOmdlvZ
 $data = json_decode(file_get_contents('php://input'));
 
 
-log_msg("dat = " . $data->type);
+log_msg("dat = " . $data->object->message->text);
 
 switch ($data->type) {
     case 'confirmation':
@@ -34,9 +34,8 @@ switch ($data->type) {
         log_msg("Connection");
 
         $item = new Group($db);
-//        $data = json_decode(file_get_contents("php://input"));
-        $item->id = $data->text;
-        $item->name = $data->text;
+        $item->id = $data->object->message->text;
+        $item->name = $data->object->message->text;
         $item->reg_open = 1;
         $item->price = 0;
         $item->created = date('Y-m-d H:i:s');
@@ -50,7 +49,7 @@ switch ($data->type) {
         log_msg("sucess5");
 
         $request_params = array(
-            'message' => "Ваша группа, {$user_name}, вот такая! {$data->text}",
+            'message' => "Ваша группа, {$user_name}, вот такая! {$data->object->message->text}",
             'peer_id' => $user_id,
             'access_token' => $token,
             'v' => '5.103',
