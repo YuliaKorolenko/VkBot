@@ -46,8 +46,9 @@ switch ($data->type) {
 //
 //        log_msg("sucess5");
 
+
         $request_params = array(
-            'message' => "Ваша группа, {$user_name}, вот такая! {$data->object->message->text}",
+            'message' => "Ваша группа, {$user_id}, вот такая! {$data->object->message->text}",
             'peer_id' => $user_id,
             'access_token' => $token,
             'keyboard' => json_encode('"buttons": [
