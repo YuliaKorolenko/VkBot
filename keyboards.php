@@ -5,6 +5,6 @@ const MAIN_KEYBOARD = [
     "buttons" => [[
         ["action" => [
             "type" => "text",
-            "payload" => '{"command": \'oj\'"}',
+            "payload" => "{\"button\": \"1\"}",
             "label" => "newnew"],
             "color" => "secondary"]]]];
