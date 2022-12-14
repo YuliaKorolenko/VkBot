@@ -13,4 +13,4 @@ const MAIN_KEYBOARD = [
                 "type" => "text",
                 "payload" => '{"command": b"}',
                 "label" => "no"],
-            "color" => "default"]]]];
+            "color" => "secondary"]]]];
