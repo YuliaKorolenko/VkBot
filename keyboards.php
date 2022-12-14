@@ -6,5 +6,11 @@ const MAIN_KEYBOARD = [
         ["action" => [
             "type" => "text",
             "payload" => "{\"button\": \"1\"}",
-            "label" => "newnew"],
-            "color" => "secondary"]]]];
+            "label" => "Создать беседу"],
+            "color" => "secondary"],
+        ["action" => [
+            "type" => "text",
+            "payload" => "{\"button\": \"1\"}",
+            "label" => "Войти в беседу"],
+            "color" => "secondary"],
+        ]]];
