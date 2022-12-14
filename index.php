@@ -49,6 +49,7 @@ switch ($data->type) {
         $request_params = array(
             'message' => "Ваша группа, {$user_name}, вот такая! {$data->object->message->text}",
             'peer_id' => $user_id,
+            'keyboard' => MAIN_KEYBOARD,
             'access_token' => $token,
             'v' => '5.103',
             'random_id' => '0'
