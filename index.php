@@ -3,6 +3,7 @@
 require_once 'global.php';
 include_once 'databases/database.php';
 include_once 'class/group.php';
+include_once 'keyboards.php';
 
 
 if (!isset($_REQUEST)) {
@@ -52,7 +53,8 @@ switch ($data->type) {
             'peer_id' => $user_id,
             'access_token' => $token,
             'random_id' => '0',
-            'keyboard' => '{"buttons":[[{"action":{"type":"callback","label":"Войти в группу","payload":""},"color":"secondary"}]]}',
+//            'keyboard' => '{"buttons":[[{"action":{"type":"callback","label":"Войти в группу","payload":""},"color":"secondary"}]]}',
+            'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
             'v' => '5.131',
         );
 
