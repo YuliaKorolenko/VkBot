@@ -51,8 +51,6 @@ switch ($data->type) {
             'peer_id' => $user_id,
             'access_token' => $token,
             'keyboard'    => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
-            'v' => '5.103',
-            'random_id' => '0',
         );
 
         $get_params = http_build_query($request_params);
