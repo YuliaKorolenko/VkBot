@@ -50,7 +50,18 @@ switch ($data->type) {
             'message' => "Ваша группа, {$user_name}, вот такая! {$data->object->message->text}",
             'peer_id' => $user_id,
             'access_token' => $token,
-            'keyboard'    => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
+            'keyboard' => json_encode('"buttons": [
+            [
+            {
+                "action": {
+                "type": "callback",
+                "label": "Создать беседу",
+                  "payload": ""
+                },
+                "color": "secondary"
+            }
+            ]
+            ]'),
             'v' => '5.103',
             'random_id' => '0',
         );
@@ -64,7 +75,7 @@ switch ($data->type) {
             'message' => "Message event",
             'peer_id' => $data->object->message->from_id,
             'access_token' => $token,
-            'keyboard'    => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
+            'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
             'v' => '5.103',
             'random_id' => '0'
         );
