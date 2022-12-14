@@ -51,18 +51,7 @@ switch ($data->type) {
             'message' => "Ваша группа, {$user_id}, вот такая! {$data->object->message->text}",
             'peer_id' => $user_id,
             'access_token' => $token,
-            'keyboard' => json_encode('{ "buttons": [
-            [
-            {
-                "action": {
-                "type": "callback",
-                "label": "Создать беседу",
-                  "payload": ""
-                },
-                "color": "secondary"
-            }
-            ]
-            ]}'),
+            'keyboard' => json_encode('{"buttons":[[{"action":{"type":"callback","label":"Создать ;bpym","payload":""},"color":"secondary"}]]}'),
             'v' => '5.103',
             'random_id' => '0',
         );
