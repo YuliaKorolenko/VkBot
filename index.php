@@ -46,7 +46,7 @@ switch ($data->type) {
 
         _callback_handleMessageEvent($data['object']);
 
-        echo('ok');
+        log_msg('ok');
         break;
     case 'message_event':
         $request_params = array(
@@ -71,7 +71,7 @@ function _callback_handleMessageEvent($data)
         'message' => "Ваша группа, {$user_name}, вот такая! ",
         'peer_id' => $user_id,
         'access_token' => $token,
-        "keyboard" => MAIN_KEYBOARD,
+        'keyboard' => MAIN_KEYBOARD,
         'v' => '5.103',
         'random_id' => '0'
     );
