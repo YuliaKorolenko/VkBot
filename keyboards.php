@@ -1,14 +1,16 @@
 <?php
 const MAIN_KEYBOARD = [
     "one_time" => false,
-    "buttons" => [[
-        [["action" => [
-            "type" => "text",
-            "payload" => '{"command": "' . "first_command" . '"}',
-            "label" => "Создать беседу"],
+    "buttons" => [
+        [[
+            "action" => [
+                "type" => "text",
+                "payload" => '{"command": a"}',
+                "label" => "please"],
             "color" => "primary"]],
-        [["action" => [
-            "type" => "text",
-            "payload" => '{"command": "' . "second_command" . '"}',
-            "label" => "Войти в беседу"],
-            "color" => "secondary"]]]]];
+        [[
+            "action" => [
+                "type" => "text",
+                "payload" => '{"command": b"}',
+                "label" => "no"],
+            "color" => "secondary"]]]];
