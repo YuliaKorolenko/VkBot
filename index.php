@@ -25,6 +25,8 @@ switch ($data->type) {
         break;
     case 'message_new':
         $user_id = $data->object->message->from_id;
+        $user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&access_token={$token}&v=5.103"));
+        $user_name = $user_info->response[0]->first_name;
 
 //        $database = new Database();
 //        $db = $database->getConnection();
@@ -44,9 +46,16 @@ switch ($data->type) {
 //
 //        log_msg("sucess5");
 
-        _callback_handleMessageEvent($data['object']);
-
-        log_msg('ok');
+        $request_params = array(
+            'message' => "Ваша группа, {$user_name}, вот такая! {$data->object->message->text}",
+            'peer_id' => $user_id,
+            'access_token' => $token,
+            'v' => '5.103',
+            'random_id' => '0'
+        );
+        $get_params = http_build_query($request_params);
+        file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
+        echo('ok');
         break;
     case 'message_event':
         $request_params = array(
@@ -60,22 +69,4 @@ switch ($data->type) {
         break;
     default:
         log_msg("default");
-}
-
-function _callback_handleMessageEvent($data)
-{
-    $user_id = $data['peer_id'];
-    $user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&access_token={$token}&v=5.103"));
-    $user_name = $user_info->response[0]->first_name;
-    $request_params = array(
-        'message' => "Ваша группа, {$user_name}, вот такая! ",
-        'peer_id' => $user_id,
-        'access_token' => $token,
-        'keyboard' => MAIN_KEYBOARD,
-        'v' => '5.103',
-        'random_id' => '0'
-    );
-    $get_params = http_build_query($request_params);
-    file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
-//    bot_sendMessage($user_id, $data);
 }
