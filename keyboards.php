@@ -7,10 +7,10 @@ const MAIN_KEYBOARD = [
                 "type" => "text",
                 "payload" => '{"command": a"}',
                 "label" => "please"],
-            "color" => "primary"]],
+            "color" => "default"]],
         [[
             "action" => [
                 "type" => "text",
                 "payload" => '{"command": b"}',
                 "label" => "no"],
-            "color" => "secondary"]]]];
+            "color" => "default"]]]];
