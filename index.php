@@ -51,9 +51,9 @@ switch ($data->type) {
             'message' => "Ваша группа, {$user_id}, вот такая! {$data->object->message->text}",
             'peer_id' => $user_id,
             'access_token' => $token,
-            'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
-            'v' => '5.131',
             'random_id' => '0',
+            'keyboard' => '{"buttons":[[{"action":{"type":"callback","label":"Войти в группу","payload":""},"color":"secondary"}]]}',
+            'v' => '5.131',
         );
 
         $get_params = http_build_query($request_params);
@@ -65,7 +65,7 @@ switch ($data->type) {
             'message' => "Message event",
             'peer_id' => $data->object->message->from_id,
             'access_token' => $token,
-            'v' => '5.103',
+            'v' => '5.131',
             'random_id' => '0'
         );
         $get_params = http_build_query($request_params);
