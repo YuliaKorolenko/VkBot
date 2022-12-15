@@ -6,6 +6,7 @@ require_once 'global.php';
 include_once 'databases/database.php';
 include_once 'class/group.php';
 include_once 'keyboards.php';
+include_once 'names.php';
 
 function callback_events(){
     if (!isset($_REQUEST)) {
@@ -45,7 +46,7 @@ function callback_events(){
 
 
             $request_params = array(
-                'message' => "Ваша группа, {$user_name}, вот такая! {$data->object->message->text}",
+                'message' => "Ваша группа, {$user_id}, вот такая! {$data->object->message->text}",
                 'peer_id' => $user_id,
                 'access_token' => BOT_TOKEN,
                 'random_id' => '0',
