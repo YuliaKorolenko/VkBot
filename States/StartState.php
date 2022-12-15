@@ -28,4 +28,9 @@ class StartState implements State
     {
         return "Выбрать группу";
     }
+
+    public function __construct()
+    {
+        log_msg("StartState");
+    }
 }

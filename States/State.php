@@ -10,6 +10,8 @@ include_once 'names.php';
 
 interface State
 {
+    public function __construct();
+
     public function _do($data);
 
     public function getName(): string;

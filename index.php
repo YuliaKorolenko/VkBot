@@ -22,6 +22,7 @@ function callback_events()
     log_msg("here");
 
     $data = json_decode(file_get_contents('php://input'));
+
     $collectStates = new CollectStates(
         new StartState()
     );
