@@ -1,20 +1,29 @@
 <?php
 
 
+use Actions\StartState;
+use States\CollectStates;
+
 require_once 'global.php';
 include_once 'databases/database.php';
 include_once 'class/group.php';
 include_once 'keyboards.php';
 include_once 'names.php';
 
+
 callback_events();
 
-function callback_events(){
+function callback_events()
+{
     if (!isset($_REQUEST)) {
         return;
     }
 
+
     $data = json_decode(file_get_contents('php://input'));
+    $collectStates = new CollectStates(
+        new StartState()
+    );
 
 
     log_msg("dat = " . $data->object->message->text);
@@ -24,8 +33,6 @@ function callback_events(){
             echo CONFIRMATION_TOKEN;
             break;
         case 'message_new':
-            $user_id = $data->object->message->from_id;
-            $user_name = $data->response[0]->first_name;
 
 //        $database = new Database();
 //        $db = $database->getConnection();
@@ -43,31 +50,24 @@ function callback_events(){
 //            log_msg("Group could not be created.");
 //        }
 //
-//        log_msg("sucess5");
+            log_msg("sucessMes");
+            $state = $collectStates->getState($data->object->message->text);
+            $state->do;
+            log_msg("sucessMes2");
 
 
-            $request_params = array(
-                'message' => "Ваша группа, {$user_id}, вот такая! {$data->object->message->text}",
-                'peer_id' => $user_id,
-                'access_token' => BOT_TOKEN,
-                'random_id' => '0',
-                'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
-                'v' => '5.131',
-            );
-
-            $get_params = http_build_query($request_params);
-            file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
             echo('ok');
             break;
         case 'message_event':
             $request_params = array(
-                'message' => "Message event, {$data->object->message->payload} {$data->object->message->payload->label}",
+                'message' => "Message event, {$data->object->message->payload} {$data->object->payload}",
                 'peer_id' => $data->object->message->from_id,
                 'access_token' => BOT_TOKEN,
                 'v' => '5.131',
                 'random_id' => '0'
             );
             $get_params = http_build_query($request_params);
+            file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
             break;
         default:
             log_msg("default");
