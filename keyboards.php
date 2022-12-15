@@ -5,12 +5,12 @@ const MAIN_KEYBOARD = [
     "buttons" => [[
         ["action" => [
             "type" => "text",
-            "payload" => "{\"button\": \"1\"}",
-            "label" => "Создать беседу"],
+            "payload" => "{\"button\": \"createGroup\"}",
+            "label" => "Создать группу"],
             "color" => "secondary"],
         ["action" => [
             "type" => "text",
-            "payload" => "{\"button\": \"1\"}",
-            "label" => "Войти в беседу"],
+            "payload" => "{\"button\": \"joinGroup\"}",
+            "label" => "Войти в группу"],
             "color" => "secondary"],
         ]]];

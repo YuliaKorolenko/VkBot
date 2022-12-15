@@ -64,7 +64,7 @@ switch ($data->type) {
         break;
     case 'message_event':
         $request_params = array(
-            'message' => "Message event",
+            'message' => "Message event, {$data->object->message->payload}",
             'peer_id' => $data->object->message->from_id,
             'access_token' => $token,
             'v' => '5.131',
