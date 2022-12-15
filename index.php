@@ -5,6 +5,8 @@ use Actions\StartState;
 use States\CollectStates;
 
 require_once 'global.php';
+require_once 'States\StartState.php';
+require_once 'States\CollectStates.php';
 include_once 'databases/database.php';
 include_once 'class/group.php';
 include_once 'keyboards.php';
@@ -26,6 +28,12 @@ function callback_events()
     $collectStates = new CollectStates(
         new StartState()
     );
+
+    log_msg("sucess");
+    $state = $collectStates->getState($data->object->message->text);
+    $state->do;
+
+    log_msg("sucessMes2");
 
     log_msg("after collect");
 
@@ -53,10 +61,7 @@ function callback_events()
 //            log_msg("Group could not be created.");
 //        }
 //
-            log_msg("sucess");
-            $state = $collectStates->getState($data->object->message->text);
-            $state->do;
-            log_msg("sucessMes2");
+
 
 
             echo('ok');
