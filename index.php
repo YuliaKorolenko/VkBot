@@ -1,6 +1,9 @@
 <?php
 
 
+use States\CollectStates;
+use States\StartState;
+
 require_once 'global.php';
 require_once 'States/StartState.php';
 require_once 'States/CollectStates.php';
