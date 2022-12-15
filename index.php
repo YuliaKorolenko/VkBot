@@ -19,12 +19,14 @@ function callback_events()
         return;
     }
 
+    log_msg("here");
 
     $data = json_decode(file_get_contents('php://input'));
     $collectStates = new CollectStates(
         new StartState()
     );
 
+    log_msg("after collect");
 
     log_msg("dat = " . $data->object->message->text);
 
@@ -50,7 +52,7 @@ function callback_events()
 //            log_msg("Group could not be created.");
 //        }
 //
-            log_msg("sucessMes");
+            log_msg("sucess");
             $state = $collectStates->getState($data->object->message->text);
             $state->do;
             log_msg("sucessMes2");
