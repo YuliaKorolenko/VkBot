@@ -1,6 +1,6 @@
 <?php
 
-namespace Actions;
+namespace States;
 
 require_once 'global.php';
 include_once 'databases/database.php';

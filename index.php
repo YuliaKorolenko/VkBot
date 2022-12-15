@@ -1,12 +1,9 @@
 <?php
 
 
-use Actions\StartState;
-use States\CollectStates;
-
 require_once 'global.php';
-require_once 'States\StartState.php';
-require_once 'States\CollectStates.php';
+require_once 'States/StartState.php';
+require_once 'States/CollectStates.php';
 include_once 'databases/database.php';
 include_once 'class/group.php';
 include_once 'keyboards.php';

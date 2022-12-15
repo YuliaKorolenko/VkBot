@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Actions;
+namespace States;
 
 class StartState implements State
 {
