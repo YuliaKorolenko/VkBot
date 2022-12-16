@@ -30,7 +30,7 @@ function callback_events()
     );
 
     log_msg("sucess");
-    $state = $collectStates->getState($data->object->message->text);
+    $state = $collectStates->getState("Войти в группу");
     $state->do;
 
     log_msg("sucessMes2");
