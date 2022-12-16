@@ -10,9 +10,6 @@ require_once 'databases/database.php';
 require_once 'class/group.php';
 require_once 'keyboards.php';
 require_once 'names.php';
-require_once 'States/CollectStates.php';
-require_once 'States/StartState.php';
-require_once 'States/State.php';
 
 
 callback_events();
