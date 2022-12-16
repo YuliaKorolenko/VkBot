@@ -1,7 +1,9 @@
 <?php
 
-
 namespace States;
+
+use States\State;
+require_once 'State.php';
 
 class StartState implements State
 {
