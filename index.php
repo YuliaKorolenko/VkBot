@@ -10,6 +10,9 @@ require_once 'databases/database.php';
 require_once 'class/group.php';
 require_once 'keyboards.php';
 require_once 'names.php';
+require_once 'States/CollectStates.php';
+require_once 'States/StartState.php';
+require_once 'States/State.php';
 
 
 callback_events();
@@ -30,9 +33,9 @@ function callback_events()
 
     log_msg("sucсess");
     $state = $collectStates->getState("Войти в группу");
-    if ($state != null){
+    if ($state != null) {
         $state->_do();
-    } else{
+    } else {
         log_msg("State is null");
     }
 
@@ -64,7 +67,6 @@ function callback_events()
 //            log_msg("Group could not be created.");
 //        }
 //
-
 
 
             echo('ok');
