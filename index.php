@@ -29,7 +29,7 @@ function callback_events()
     );
 
     log_msg("sucсess");
-    $state = $collectStates->getState("Войти в группу");
+    $state = $collectStates->getState("Выбрать группу");
     if ($state != null) {
         $state->_do();
     } else {
