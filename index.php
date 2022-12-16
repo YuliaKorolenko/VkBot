@@ -29,9 +29,9 @@ function callback_events()
         new StartState()
     );
 
-    log_msg("sucess");
+    log_msg("sucсess");
     $state = $collectStates->getState("Войти в группу");
-    $state->do;
+    $state->do();
 
     log_msg("sucessMes2");
 

@@ -2,6 +2,9 @@
 
 namespace States;
 
+use States\State;
+use States\StartState;
+
 require_once 'global.php';
 
 class CollectStates
