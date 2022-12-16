@@ -18,8 +18,8 @@ class CollectStates
     {
         log_msg("getStateStart");
         foreach ($this->states as $state) {
-
-            if (in_array($name, $state->getName())) {
+            log_msg("foreach");
+            if ($name == $state->getName()) {
                 log_msg($state->getName());
                 return $state;
             }
