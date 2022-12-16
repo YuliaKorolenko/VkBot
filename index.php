@@ -7,10 +7,10 @@ use States\StartState;
 require_once 'global.php';
 require_once 'States/StartState.php';
 require_once 'States/CollectStates.php';
-include_once 'databases/database.php';
-include_once 'class/group.php';
-include_once 'keyboards.php';
-include_once 'names.php';
+require_once 'databases/database.php';
+require_once 'class/group.php';
+require_once 'keyboards.php';
+require_once 'names.php';
 
 
 callback_events();

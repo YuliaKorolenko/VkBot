@@ -17,6 +17,7 @@ class CollectStates
     public function getState(string $name): ?State
     {
         foreach ($this->states as $state) {
+            if (strcmp("Выбрать группу", $state->getName()))
             return $state;
         }
         return null;
