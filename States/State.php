@@ -3,10 +3,10 @@
 namespace States;
 
 require_once 'global.php';
-include_once 'databases/database.php';
-include_once 'class/group.php';
-include_once 'keyboards.php';
-include_once 'names.php';
+require_once 'databases/database.php';
+require_once 'class/group.php';
+require_once 'keyboards.php';
+require_once 'names.php';
 
 interface State
 {

@@ -2,8 +2,6 @@
 
 namespace States;
 
-use State;
-
 require_once 'global.php';
 
 class StartState implements State
