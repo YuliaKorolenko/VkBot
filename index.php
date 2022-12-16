@@ -31,7 +31,7 @@ function callback_events()
     log_msg("sucсess");
     $state = $collectStates->getState("Выбрать группу");
     if ($state != null) {
-        $state->_do();
+        $state->_do($data);
     } else {
         log_msg("State is null");
     }

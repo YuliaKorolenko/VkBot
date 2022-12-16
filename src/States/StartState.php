@@ -14,10 +14,10 @@ class StartState implements State
 
     public function _do($data)
     {
+        log_msg("sucessDo");
         $user_id = $data->object->message->from_id;
         $user_name = $data->response[0]->first_name;
 
-        log_msg("sucessDo");
         $request_params = array(
             'message' => "Ваша группа, {$user_id}, вот такая! {$data->object->message->text}",
             'peer_id' => $user_id,
