@@ -3,10 +3,9 @@
 
 use States\CollectStates;
 use States\StartState;
+use States\State;
 
 require_once 'global.php';
-require_once 'States/StartState.php';
-require_once 'States/CollectStates.php';
 require_once 'databases/database.php';
 require_once 'class/group.php';
 require_once 'keyboards.php';
@@ -31,7 +30,11 @@ function callback_events()
 
     log_msg("sucсess");
     $state = $collectStates->getState("Войти в группу");
-    $state->do();
+    if ($state != null){
+        $state->_do();
+    } else{
+        log_msg("State is null");
+    }
 
     log_msg("sucessMes2");
 

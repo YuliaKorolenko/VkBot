@@ -5,7 +5,6 @@ namespace States;
 use State;
 
 require_once 'global.php';
-require_once 'State.php';
 
 class StartState implements State
 {
