@@ -1,4 +1,10 @@
 <?php
+
+namespace App\databases;
+
+use PDO;
+use PDOException;
+
 require_once 'global.php';
 
 class Database {

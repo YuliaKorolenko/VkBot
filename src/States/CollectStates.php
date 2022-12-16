@@ -18,9 +18,10 @@ class CollectStates
     {
         log_msg("getStateStart");
         foreach ($this->states as $state) {
-            log_msg($state->getName());
-            if (strcmp("Выбрать группу", "Выбрать группу"))
-            return $state;
+            if (in_array($name, $state->getNames())) {
+                log_msg($state->getNames());
+                return $state;
+            }
         }
         return null;
     }
