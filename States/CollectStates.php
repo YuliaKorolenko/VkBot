@@ -17,7 +17,7 @@ class CollectStates
     public function getState(string $name): ?State
     {
         foreach ($this->states as $state) {
-            if ($name==$state->getName()) {
+            if ("Войти в группу"==$state->getName()) {
                 return $state;
             }
         }
