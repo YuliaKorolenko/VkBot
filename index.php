@@ -1,18 +1,18 @@
 <?php
 
 
-use States\CollectStates;
-use States\StartState;
-use States\State;
+use App\States\CollectStates;
+use App\States\StartState;
 
 require_once 'global.php';
-require_once 'databases/database.php';
-require_once 'class/group.php';
 require_once 'keyboards.php';
 require_once 'names.php';
 
+require __DIR__ . '/vendor/autoload.php';
+
 
 callback_events();
+new CollectStates();
 
 function callback_events()
 {

@@ -1,7 +1,6 @@
 <?php
 
-namespace States;
-
+namespace App\States;
 
 require_once 'global.php';
 

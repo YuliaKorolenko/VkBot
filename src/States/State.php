@@ -1,6 +1,6 @@
 <?php
 
-namespace States;
+namespace App\States;
 
 require_once 'global.php';
 require_once 'databases/database.php';
