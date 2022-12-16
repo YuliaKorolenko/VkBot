@@ -18,7 +18,7 @@ class CollectStates
     {
         log_msg("getStateStart");
         foreach ($this->states as $state) {
-            log_msg("foreach");
+            log_msg($state->getName());
             if ($name == $state->getName()) {
                 log_msg($state->getName());
                 return $state;
