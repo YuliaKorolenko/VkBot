@@ -3,7 +3,6 @@
 namespace App\States;
 
 require_once 'global.php';
-require_once 'App\Answers.php';
 
 class StartState implements State
 {
