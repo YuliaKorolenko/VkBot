@@ -19,7 +19,7 @@ class StartState implements State
         $user_name = $data->response[0]->first_name;
 
         $request_params = array(
-            'message' => "Ваша группа, {$user_id}, вот такая! {$data->object->message->text}",
+            'message' => STRING_START,
             'peer_id' => $user_id,
             'access_token' => BOT_TOKEN,
             'random_id' => '0',
@@ -34,7 +34,7 @@ class StartState implements State
 
     public function getName(): string
     {
-        return "Выбрать группу";
+        return "Начать";
     }
 
 
