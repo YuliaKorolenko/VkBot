@@ -29,7 +29,7 @@ function callback_events()
     );
 
     log_msg("sucсess");
-    $state = $collectStates->getState("Выбрать группу");
+    $state = $collectStates->getState("Начать");
     if ($state != null) {
         $state->_do($data);
     } else {
@@ -69,13 +69,18 @@ function callback_events()
             echo('ok');
             break;
         case 'message_event':
+            $user_id = $data->object->message->from_id;
+            $user_name = $data->response[0]->first_name;
+
             $request_params = array(
-                'message' => "Message event, {$data->object->message->payload} {$data->object->payload}",
-                'peer_id' => $data->object->message->from_id,
+                'message' => "Message event, {$user_id}, вот такая! {$data->object->message->text}",
+                'peer_id' => $user_id,
                 'access_token' => BOT_TOKEN,
+                'random_id' => '0',
+                'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
                 'v' => '5.131',
-                'random_id' => '0'
             );
+
             $get_params = http_build_query($request_params);
             file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
             break;
