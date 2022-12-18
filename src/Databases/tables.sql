@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
     `group_id` varchar(8) NOT NULL,
     `is_creator` int(1) ZEROFILL,
     `vish_list` varchar(256) NOT NULL,
+    `state_number` varchar(256) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`group_id`) REFERENCES `MyGroup`(`id`) ON DELETE CASCADE
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8;

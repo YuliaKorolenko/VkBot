@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Classes;
+
 require_once 'global.php';
 
 class Group

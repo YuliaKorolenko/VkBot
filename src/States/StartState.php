@@ -2,6 +2,10 @@
 
 namespace App\States;
 
+use App\Classes\Users;
+use App\Databases\Database;
+use Couchbase\User;
+
 require_once 'global.php';
 
 class StartState implements State
@@ -16,7 +20,22 @@ class StartState implements State
     {
         log_msg("sucessDo");
         $user_id = $data->object->message->from_id;
-        $user_name = $data->response[0]->first_name;
+
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $item = new Users($db);
+        $item->id = $data->object->message->from_id;
+        $item->group_id = 'empty';
+        $item->is_creator = 0;
+        $item->state_number = $this->getName();
+        $item->vish_list = 'empty';
+
+        if ($item->create()) {
+            log_msg("Group created successfully.");
+        } else {
+            log_msg("Group could not be created.");
+        }
 
         $request_params = array(
             'message' => STRING_START,
