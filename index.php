@@ -63,7 +63,6 @@ function callback_events()
 //        } else {
 //            log_msg("Group could not be created.");
 //        }
-//
 
 
             echo('ok');
