@@ -24,17 +24,17 @@ class StartState implements State
         $database = new Database();
         $db = $database->getConnection();
 
-        $item = new Users($db);
-        $item->id = $data->object->message->from_id;
-        $item->group_id = 'empty';
-        $item->is_creator = 0;
-        $item->state_number = $this->getName();
-        $item->vish_list = 'empty';
+        $user = new Users($db);
+        $user->id = $user_id;
+        $user->group_id = 'empty';
+        $user->is_creator = 0;
+        $user->state_number = $this->getName();
+        $user->vish_list = 'empty';
 
-        if ($item->create()) {
-            log_msg("Group created successfully.");
+        if ($user->create()) {
+            log_msg("User created successfully.");
         } else {
-            log_msg("Group could not be created.");
+            log_msg("User could not be created.");
         }
 
         $request_params = array(
