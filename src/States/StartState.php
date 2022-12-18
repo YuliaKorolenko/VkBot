@@ -24,6 +24,8 @@ class StartState implements State
         $database = new Database();
         $db = $database->getConnection();
 
+        log_msg($user_id);
+
         $user = new Users($db);
         $user->id = $user_id;
         $user->group_id = 'empty';
