@@ -27,8 +27,8 @@ class Users
 
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
-                    (group_id, is_creator, vish_list, state_number) 
-                    VALUES ('$this->group_id' , $this->is_creator, '$this->vish_list', '$this->state_number');";
+                    (id, group_id, is_creator, vish_list, state_number) 
+                    VALUES ($this->id, '$this->group_id' , $this->is_creator, '$this->vish_list', '$this->state_number');";
 
         log_msg($sqlQuery);
 
