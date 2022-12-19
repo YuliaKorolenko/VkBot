@@ -3,6 +3,7 @@
 
 use App\States\CollectStates;
 use App\States\StartState;
+use App\States\CreateState;
 
 require_once 'global.php';
 require_once 'keyboards.php';
@@ -47,7 +48,8 @@ function callback_events()
 //        }
 
             $collectStates = new CollectStates(
-                new StartState()
+                new StartState(),
+                new CreateState()
             );
 
             log_msg("sucсess");
