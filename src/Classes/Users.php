@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+require_once 'global.php';
+
 class Users
 {
     private $conn;
@@ -11,6 +13,7 @@ class Users
     // Columns
 
     public $id;
+    public $user_id;
     public $group_id;
     public $is_creator;
     public $vish_list;
@@ -27,8 +30,8 @@ class Users
 
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
-                    (id, group_id, is_creator, vish_list, state_number) 
-                    VALUES ($this->id, '$this->group_id' , $this->is_creator, '$this->vish_list', '$this->state_number');";
+                    (user_id, group_id, is_creator, vish_list, state_number) 
+                    VALUES ($this->user_id, '$this->group_id' , $this->is_creator, '$this->vish_list', '$this->state_number');";
 
         log_msg($sqlQuery);
 

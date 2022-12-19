@@ -20,7 +20,8 @@ INSERT INTO
 
 
 CREATE TABLE IF NOT EXISTS `Users` (
-    `id` INT NOT NULL,
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `user_id` INT NOT NULL,
     `group_id` varchar(8) NOT NULL,
     `is_creator` int(1) ZEROFILL,
     `vish_list` varchar(256) NOT NULL,
@@ -28,3 +29,5 @@ CREATE TABLE IF NOT EXISTS `Users` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`group_id`) REFERENCES `MyGroup`(`id`) ON DELETE CASCADE
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+DROP TABLE `Users`;
