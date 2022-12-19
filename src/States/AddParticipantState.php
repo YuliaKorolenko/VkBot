@@ -73,7 +73,7 @@ class AddParticipantState implements State
 
     public function getName(): string
     {
-        ENTER_GROUP_STATE;
+        return ENTER_GROUP_STATE;
     }
 
     public function getPreviousName(): string

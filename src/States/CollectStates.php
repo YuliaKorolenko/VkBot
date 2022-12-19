@@ -28,7 +28,7 @@ class CollectStates
 
     public function getStateByPrev(string $name): ?State
     {
-        log_msg("getStateStart");
+        log_msg("getStateByPrevStart");
         foreach ($this->states as $state) {
             if ($name == $state->getPreviousName()) {
                 return $state;
