@@ -2,6 +2,7 @@
 
 namespace App\States;
 
+use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
@@ -35,6 +36,17 @@ class OutState implements State
     public function _do($data)
     {
         $user_id = $data->object->message->from_id;
+
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $participant = new Participants($db);
+        $participant->user_id = $user_id;
+        $participant->is_active = 0;
+
+        $participant->changeActive();
+
+
         $request_params = array(
             'message' => STRING_OUT_STATE,
             'peer_id' => $user_id,

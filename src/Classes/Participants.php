@@ -64,4 +64,23 @@ class Participants
         return false;
     }
 
+    public function changeActive(){
+        log_msg("In function update participants");
+
+        $sqlQuery = "UPDATE 
+                    " . $this->db_table . " 
+                    SET is_active = 0
+                    WHERE user_id = $this->user_id;";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
