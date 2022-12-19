@@ -24,9 +24,9 @@ class AddWishListState implements State
         $user->state_number=$this->getName();
 
         if ($user->update()) {
-            log_msg("User updated successfully.");
+            log_msg("Add user updated successfully.");
         } else {
-            log_msg("User could not be updated.");
+            log_msg("Add user not be updated.");
         }
 
         $this->_do($data);

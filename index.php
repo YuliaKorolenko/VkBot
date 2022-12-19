@@ -1,6 +1,7 @@
 <?php
 
 
+use App\States\AddWishListState;
 use App\States\CollectStates;
 use App\States\StartState;
 use App\States\CreateState;
@@ -36,7 +37,8 @@ function callback_events()
             $collectStates = new CollectStates(
                 new StartState(),
                 new CreateState(),
-                new AddGroupState()
+                new AddGroupState(),
+                new AddWishListState()
             );
 
             $database = new Database();
@@ -55,12 +57,15 @@ function callback_events()
 
             $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
+                log_msg("byName");
                 $state->changeState($data);
 //                if ($state->getPreviousName() == $user->getNumberState()){
 //                } else {
 //                    log_msg("Problem");
 //                }
             } else {
+                log_msg("State number of user");
+                log_msg($user->state_number);
                 $state = $collectStates->getStateByPrev($user->state_number);
                 $state->changeState($data);
             }
