@@ -29,7 +29,7 @@ class Participants
 
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
-                    (user_id, group_id, is_creator, vish_list, state_number) 
+                    (user_id, group_id, is_creator, wish_list, state_number) 
                     VALUES ($this->user_id, '$this->group_id' , $this->is_creator, '$this->wish_list', $this->is_active);";
 
         log_msg($sqlQuery);

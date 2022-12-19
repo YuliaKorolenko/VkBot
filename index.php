@@ -58,8 +58,7 @@ function callback_events()
                 if ($state->getPreviousName() == $user->getNumberState()){
                     $state->changeState($data);
                 } else {
-                    $statePrev = $collectStates->getState($user->getNumberState());
-                    $statePrev->_error($data);
+                    log_msg("Problem");
                 }
             } else {
                 $state = $collectStates->getStateByPrev($user->state_number);

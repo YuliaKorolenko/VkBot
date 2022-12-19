@@ -59,7 +59,7 @@ class StartState implements State
 
     public function getName(): string
     {
-        return "Начать";
+        return START_STATE;
     }
 
 

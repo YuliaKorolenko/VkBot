@@ -3,6 +3,7 @@
 namespace App\States;
 
 use App\Classes\Group;
+use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
@@ -37,6 +38,19 @@ class AddGroupState implements State
         $user_id = $data->object->message->from_id;
         $database = new Database();
         $db = $database->getConnection();
+
+        $participant = new Participants($db);
+        $participant->user_id=$user_id;
+        $participant->group_id=$data->object->message->text;
+        $participant->is_active=1;
+        $participant->is_creator=1;
+        $participant->wish_list="";
+
+        if ($participant->create()) {
+            log_msg("Participant created successfully.");
+        } else {
+            log_msg("Participant could not be created.");
+        }
 
         $item = new Group($db);
         $item->id = $data->object->message->text;
