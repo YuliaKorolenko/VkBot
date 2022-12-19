@@ -28,10 +28,7 @@ class StartState implements State
 
         $user = new Users($db);
         $user->user_id = $user_id;
-        $user->group_id = 'empty';
-        $user->is_creator = 0;
         $user->state_number = $this->getName();
-        $user->vish_list = 'empty';
 
         if ($user->create()) {
             log_msg("User created successfully.");

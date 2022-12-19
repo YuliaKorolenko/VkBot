@@ -3,16 +3,20 @@
 namespace App\Classes;
 
 require_once 'global.php';
-
-class Users
+class Participants
 {
     private $conn;
 
-    private $db_table = "`Users`";
+    private $db_table = "`Participants`";
 
     // Columns
+
+    public $id;
     public $user_id;
-    public $state_number;
+    public $group_id;
+    public $is_creator;
+    public $wish_list;
+    public $is_active;
 
     public function __construct($db)
     {
@@ -21,12 +25,12 @@ class Users
 
     public function create()
     {
-        log_msg("In function create users");
+        log_msg("In function create participants");
 
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
-                    (user_id, state_number) 
-                    VALUES ($this->user_id, '$this->state_number');";
+                    (user_id, group_id, is_creator, vish_list, state_number) 
+                    VALUES ($this->user_id, '$this->group_id' , $this->is_creator, '$this->wish_list', $this->is_active);";
 
         log_msg($sqlQuery);
 
