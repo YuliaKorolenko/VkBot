@@ -71,11 +71,12 @@ class Users
 
         $stmt = $this->conn->prepare($sqlQuery);
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $this->state_number=$row['state_number'];;
 
         if ($stmt->execute()) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->state_number=$row['state_number'];
             return true;
         }
 
