@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use PDO;
+
 require_once 'global.php';
 
 class Users
@@ -81,7 +83,7 @@ class Users
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $this->state_number=$row;
+        $this->state_number=$row['state_number'];;
 
         log_msg("false");
         return false;
