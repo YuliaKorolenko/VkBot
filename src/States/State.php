@@ -12,6 +12,10 @@ interface State
 
     public function _do($data);
 
+    public function _error($data);
+
     public function getName(): string;
+
+    public function getPreviousName(): string;
 
 }

@@ -26,4 +26,16 @@ class CollectStates
     }
 
 
+    public function getStateByPrev(string $name): ?State
+    {
+        log_msg("getStateStart");
+        foreach ($this->states as $state) {
+            if ($name == $state->getPreviousName()) {
+                return $state;
+            }
+        }
+        return null;
+    }
+
+
 }

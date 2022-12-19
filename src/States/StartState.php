@@ -55,4 +55,13 @@ class StartState implements State
     }
 
 
+    public function getPreviousName(): string
+    {
+        return "";
+    }
+
+    public function _error($data)
+    {
+        // TODO: Implement _error() method.
+    }
 }

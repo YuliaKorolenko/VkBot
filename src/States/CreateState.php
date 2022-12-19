@@ -44,7 +44,16 @@ class CreateState implements State
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
         return "Создать группу";
+    }
+
+    public function getPreviousName(): string
+    {
+        return "Начать";
+    }
+
+    public function _error($data)
+    {
+        // TODO: Implement _error() method.
     }
 }
