@@ -2,6 +2,9 @@
 
 namespace App\States;
 
+use App\Classes\Users;
+use App\Databases\Database;
+
 class CreateState implements State
 {
 
@@ -12,6 +15,19 @@ class CreateState implements State
     public function _do($data)
     {
         $user_id = $data->object->message->from_id;
+
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $user = new Users($db);
+        $user->id = $user_id;
+        $user->state_number=$this->getName();
+
+        if ($user->update()) {
+            log_msg("User updated successfully.");
+        } else {
+            log_msg("User could not be updated.");
+        }
 
         $request_params = array(
             'message' => STRING_CREATE,

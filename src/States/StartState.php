@@ -4,7 +4,6 @@ namespace App\States;
 
 use App\Classes\Users;
 use App\Databases\Database;
-use Couchbase\User;
 
 require_once 'global.php';
 

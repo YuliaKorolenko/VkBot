@@ -41,4 +41,24 @@ class Users
         return false;
     }
 
+    public function update(){
+        $sqlQuery = "UPDATE 
+                    " . $this->db_table . " 
+                    SET state_number = $this->state_number
+                    WHERE id = $this->id;";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            log_msg("true");
+            return true;
+        }
+
+        log_msg("false");
+        return false;
+
+    }
+
 }
