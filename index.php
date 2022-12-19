@@ -4,6 +4,7 @@
 use App\States\CollectStates;
 use App\States\StartState;
 use App\States\CreateState;
+use App\Classes\Users;
 
 require_once 'global.php';
 require_once 'keyboards.php';
@@ -52,12 +53,25 @@ function callback_events()
                 new CreateState()
             );
 
+            $database = new Database();
+            $db = $database->getConnection();
+
+
+            $user = new Users($db);
+            $user->id = $data->object->message->from_id;
+
+            if ($user->getState()) {
+                log_msg("GetState created successfully.");
+                log_msg($user->state_number);
+            } else {
+                log_msg("User could not be created.");
+            }
             log_msg("sucсess");
             $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
                 $state->_do($data);
             } else {
-                log_msg("State is null");
+                log_msg();
             }
 
             log_msg("sucessMes2");

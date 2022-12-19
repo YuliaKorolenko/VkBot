@@ -41,7 +41,8 @@ class Users
         return false;
     }
 
-    public function update(){
+    public function update()
+    {
         $sqlQuery = "UPDATE 
                     " . $this->db_table . " 
                     SET state_number = '$this->state_number'
@@ -59,6 +60,31 @@ class Users
         log_msg("false");
         return false;
 
+    }
+
+    public function getState()
+    {
+        $sqlQuery = "SELECT state_number
+                    INTO 
+                    " . $this->db_table . " 
+                    WHERE id= $this->id;";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+
+        if ($stmt->execute()) {
+            log_msg("true");
+            return true;
+        }
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->state_number=$row;
+
+        log_msg("false");
+        return false;
     }
 
 }
