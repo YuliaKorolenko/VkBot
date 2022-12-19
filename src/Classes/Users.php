@@ -67,7 +67,7 @@ class Users
     public function getState()
     {
         $sqlQuery = "SELECT state_number
-                    INTO 
+                    FROM 
                     " . $this->db_table . " 
                     WHERE id= $this->id;";
 
