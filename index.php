@@ -63,10 +63,6 @@ function callback_events()
             if ($state != null) {
                 log_msg("byName");
                 $state->changeState($data);
-                if ($state->getPreviousName() == $user->getNumberState()){
-                } else {
-                    log_msg("Problem");
-                }
             } else {
                 log_msg("State number of user");
                 log_msg($user->state_number);

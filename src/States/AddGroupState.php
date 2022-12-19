@@ -82,12 +82,12 @@ class AddGroupState implements State
 
     public function getName(): string
     {
-        return "Добавить группу";
+        return ADD_GROUP;
     }
 
     public function getPreviousName(): string
     {
-        return "Создать группу";
+        return CREATE_GROUP;
     }
 
     public function _error($data)

@@ -35,6 +35,7 @@ class AddWishListState implements State
 
     public function _do($data)
     {
+        log_msg("In Do WISHLIST");
         $user_id = $data->object->message->from_id;
 
         $database = new Database();
@@ -68,11 +69,11 @@ class AddWishListState implements State
 
     public function getName(): string
     {
-        return "Добавить пользователя";
+        return ADD_WISH_LIST;
     }
 
     public function getPreviousName(): string
     {
-        return "Добавить группу";
+        return ADD_GROUP;
     }
 }

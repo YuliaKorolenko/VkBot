@@ -60,6 +60,6 @@ class OutState implements State
 
     public function getPreviousName(): string
     {
-        return "Добавить пользователя";
+        return ADD_WISH_LIST;
     }
 }

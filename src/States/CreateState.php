@@ -50,12 +50,12 @@ class CreateState implements State
 
     public function getName(): string
     {
-        return "Создать группу";
+        return CREATE_GROUP;
     }
 
     public function getPreviousName(): string
     {
-        return "Начать";
+        return START_STATE;
     }
 
     public function _error($data)
