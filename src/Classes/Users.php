@@ -44,7 +44,7 @@ class Users
     public function update(){
         $sqlQuery = "UPDATE 
                     " . $this->db_table . " 
-                    SET state_number = $this->state_number
+                    SET state_number = '$this->state_number'
                     WHERE id = $this->id;";
 
         log_msg($sqlQuery);
