@@ -25,9 +25,9 @@ class AddWishListState implements State
         $user->state_number=$this->getName();
 
         if ($user->update()) {
-            log_msg("Add user updated successfully.");
+            log_msg("WishList change successfully.");
         } else {
-            log_msg("Add user not be updated.");
+            log_msg("WishList change not be updated.");
         }
 
         $this->_do($data);
@@ -42,12 +42,12 @@ class AddWishListState implements State
 
         $db = $database->getConnection();
 
-        $participant = new Participants();
+        $participant = new Participants($db);
         $participant->user_id = $user_id;
         $participant->wish_list = $data->object->message->from_id;
         $participant->is_active = 1;
 
-        $participant->update($db);
+        $participant->update();
 
         $request_params = array(
             'message' => STRING_WISH_LIST,
