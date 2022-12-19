@@ -39,18 +39,6 @@ class AddGroupState implements State
         $database = new Database();
         $db = $database->getConnection();
 
-        $participant = new Participants($db);
-        $participant->user_id=$user_id;
-        $participant->group_id=$data->object->message->text;
-        $participant->is_active=1;
-        $participant->is_creator=1;
-        $participant->wish_list="";
-
-        if ($participant->create()) {
-            log_msg("Participant created successfully.");
-        } else {
-            log_msg("Participant could not be created.");
-        }
 
         $item = new Group($db);
         $item->id = $data->object->message->text;
@@ -64,6 +52,20 @@ class AddGroupState implements State
         } else {
             log_msg("Group could not be created.");
         }
+
+        $participant = new Participants($db);
+        $participant->user_id=$user_id;
+        $participant->group_id=$data->object->message->text;
+        $participant->is_active=1;
+        $participant->is_creator=1;
+        $participant->wish_list="";
+
+        if ($participant->create()) {
+            log_msg("Participant created successfully.");
+        } else {
+            log_msg("Participant could not be created.");
+        }
+
 
         $request_params = array(
             'message' =>  STRING_ADD,
