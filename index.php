@@ -47,11 +47,12 @@ function callback_events()
 //        }
 
             $collectStates = new CollectStates(
-                new StartState()
+                new StartState(),
+                new CreateState()
             );
 
             log_msg("sucсess");
-            $state = $collectStates->getState("Начать");
+            $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
                 $state->_do($data);
             } else {
