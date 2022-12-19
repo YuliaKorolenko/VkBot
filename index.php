@@ -1,6 +1,7 @@
 <?php
 
 
+use App\States\AddParticipantState;
 use App\States\AddWishListState;
 use App\States\CollectStates;
 use App\States\StartState;
@@ -40,7 +41,8 @@ function callback_events()
                 new CreateState(),
                 new AddGroupState(),
                 new AddWishListState(),
-                new OutState()
+                new OutState(),
+                new AddParticipantState()
             );
 
             log_msg("dat = " . $data->object->message->text);
