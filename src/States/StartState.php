@@ -27,7 +27,7 @@ class StartState implements State
         log_msg($user_id);
 
         $user = new Users($db);
-        $user->user_id = $user_id;
+        $user->id = $user_id;
         $user->state_number = $this->getName();
 
         if ($user->create()) {

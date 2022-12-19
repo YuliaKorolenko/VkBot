@@ -11,7 +11,7 @@ class Users
     private $db_table = "`Users`";
 
     // Columns
-    public $user_id;
+    public $id;
     public $state_number;
 
     public function __construct($db)
@@ -25,8 +25,8 @@ class Users
 
         $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
-                    (user_id, state_number) 
-                    VALUES ($this->user_id, '$this->state_number');";
+                    (id, state_number) 
+                    VALUES ($this->id, '$this->state_number');";
 
         log_msg($sqlQuery);
 
