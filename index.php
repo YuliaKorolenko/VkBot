@@ -47,8 +47,7 @@ function callback_events()
 //        }
 
             $collectStates = new CollectStates(
-                new StartState(),
-                new CreateState()
+                new StartState()
             );
 
             log_msg("sucсess");
