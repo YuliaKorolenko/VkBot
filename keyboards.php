@@ -1,5 +1,6 @@
 <?php
 
+require_once "names.php";
 const MAIN_KEYBOARD = [
     "one_time" => false,
     "buttons" => [[
@@ -26,6 +27,6 @@ const CREATE_KEYBOARD = [
         ["action" => [
             "type" => "text",
             "payload" => "{\"button\": \"out\"}",
-            "label" => "Выйти из группы"],
+            "label" => OUT_STATE],
             "color" => "secondary"],
     ]]];

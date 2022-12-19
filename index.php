@@ -8,6 +8,7 @@ use App\States\CreateState;
 use App\Classes\Users;
 use App\Databases\Database;
 use App\States\AddGroupState;
+use App\States\OutState;
 
 require_once 'global.php';
 require_once 'keyboards.php';
@@ -38,8 +39,11 @@ function callback_events()
                 new StartState(),
                 new CreateState(),
                 new AddGroupState(),
-                new AddWishListState()
+                new AddWishListState(),
+                new OutState()
             );
+
+            log_msg("dat = " . $data->object->message->text);
 
             $database = new Database();
             $db = $database->getConnection();
@@ -59,10 +63,10 @@ function callback_events()
             if ($state != null) {
                 log_msg("byName");
                 $state->changeState($data);
-//                if ($state->getPreviousName() == $user->getNumberState()){
-//                } else {
-//                    log_msg("Problem");
-//                }
+                if ($state->getPreviousName() == $user->getNumberState()){
+                } else {
+                    log_msg("Problem");
+                }
             } else {
                 log_msg("State number of user");
                 log_msg($user->state_number);
@@ -70,11 +74,8 @@ function callback_events()
                 $state->changeState($data);
             }
 
-            log_msg("sucessMes2");
 
             log_msg("after collect");
-
-            log_msg("dat = " . $data->object->message->text);
 
             echo('ok');
             break;
