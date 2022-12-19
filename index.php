@@ -62,7 +62,7 @@ function callback_events()
                     $statePrev->_error($data);
                 }
             } else {
-
+                $state = $collectStates->getStateByPrev($user->state_number);
             }
 
             log_msg("sucessMes2");
