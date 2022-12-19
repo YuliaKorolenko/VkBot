@@ -21,21 +21,6 @@ class Users
         $this->conn = $db;
     }
 
-    private function request($sqlQuery){
-
-        log_msg($sqlQuery);
-
-        $stmt = $this->conn->prepare($sqlQuery);
-
-        if ($stmt->execute()) {
-            log_msg("true");
-            return true;
-        }
-
-        log_msg("false");
-        return false;
-    }
-
     public function create()
     {
         log_msg("In function create users");
@@ -45,7 +30,15 @@ class Users
                     (id, state_number) 
                     VALUES ($this->id, '$this->state_number');";
 
-        $this->request($sqlQuery);
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
     public function update()
@@ -55,7 +48,15 @@ class Users
                     SET state_number = '$this->state_number'
                     WHERE id = $this->id;";
 
-        $this->request($sqlQuery);
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
 
     }
 
@@ -66,7 +67,15 @@ class Users
                     " . $this->db_table . " 
                     WHERE id= $this->id;";
 
-        $this->request($sqlQuery);
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
 }

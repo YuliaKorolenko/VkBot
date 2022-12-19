@@ -20,21 +20,6 @@ class Group
         $this->conn = $db;
     }
 
-    private function request($sqlQuery){
-
-        log_msg($sqlQuery);
-
-        $stmt = $this->conn->prepare($sqlQuery);
-
-        if ($stmt->execute()) {
-            log_msg("true");
-            return true;
-        }
-
-        log_msg("false");
-        return false;
-    }
-
     public function create()
     {
         log_msg("In function create");
@@ -44,7 +29,15 @@ class Group
                     (id, name, reg_open, price, created) 
                     VALUES ('$this->id', '$this->name' , $this->reg_open, $this->price, '$this->created');";
 
-        $this->request($sqlQuery);
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
 }

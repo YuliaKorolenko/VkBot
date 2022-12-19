@@ -23,20 +23,6 @@ class Participants
         $this->conn = $db;
     }
 
-    private function request($sqlQuery){
-
-        log_msg($sqlQuery);
-
-        $stmt = $this->conn->prepare($sqlQuery);
-
-        if ($stmt->execute()) {
-            log_msg("true");
-            return true;
-        }
-
-        log_msg("false");
-        return false;
-    }
 
     public function create()
     {
@@ -48,7 +34,15 @@ class Participants
                     WHERE user_id = $this->user_id
                     AND is_active = 1;";;
 
-        $this->request($sqlQuery);
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
     public function update(){
@@ -59,7 +53,15 @@ class Participants
                     (user_id, group_id, is_creator, wish_list, is_active) 
                     VALUES ($this->user_id, '$this->group_id' , $this->is_creator, '$this->wish_list', $this->is_active);";
 
-        $this->request($sqlQuery);
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
 }
