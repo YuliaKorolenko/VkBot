@@ -27,6 +27,6 @@ const CREATE_KEYBOARD = [
         ["action" => [
             "type" => "text",
             "payload" => "{\"button\": \"out\"}",
-            "label" => OUT_STATE],
+            "label" => "Выйти"],
             "color" => "secondary"],
     ]]];
