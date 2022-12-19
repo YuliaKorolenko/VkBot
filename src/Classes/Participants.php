@@ -28,11 +28,10 @@ class Participants
     {
         log_msg("In function create participants");
 
-        $sqlQuery = "UPDATE 
+        $sqlQuery = "INSERT INTO 
                     " . $this->db_table . " 
-                    SET wish_list = '$this->wish_list'
-                    WHERE user_id = $this->user_id
-                    AND is_active = 1;";;
+                    (user_id, group_id, is_creator, wish_list, is_active) 
+                    VALUES ($this->user_id, '$this->group_id' , $this->is_creator, '$this->wish_list', $this->is_active);";
 
         log_msg($sqlQuery);
 
@@ -48,10 +47,11 @@ class Participants
     public function update(){
         log_msg("In function update participants");
 
-        $sqlQuery = "INSERT INTO 
+        $sqlQuery = "UPDATE 
                     " . $this->db_table . " 
-                    (user_id, group_id, is_creator, wish_list, is_active) 
-                    VALUES ($this->user_id, '$this->group_id' , $this->is_creator, '$this->wish_list', $this->is_active);";
+                    SET wish_list = '$this->wish_list'
+                    WHERE user_id = $this->user_id
+                    AND is_active = 1;";
 
         log_msg($sqlQuery);
 
