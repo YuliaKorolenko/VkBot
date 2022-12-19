@@ -24,24 +24,6 @@ function callback_events()
 
     $data = json_decode(file_get_contents('php://input'));
 
-    $collectStates = new CollectStates(
-        new StartState()
-    );
-
-    log_msg("sucсess");
-    $state = $collectStates->getState("Начать");
-    if ($state != null) {
-        $state->_do($data);
-    } else {
-        log_msg("State is null");
-    }
-
-    log_msg("sucessMes2");
-
-    log_msg("after collect");
-
-    log_msg("dat = " . $data->object->message->text);
-
     switch ($data->type) {
         case 'confirmation':
             echo CONFIRMATION_TOKEN;
@@ -64,6 +46,23 @@ function callback_events()
 //            log_msg("Group could not be created.");
 //        }
 
+            $collectStates = new CollectStates(
+                new StartState()
+            );
+
+            log_msg("sucсess");
+            $state = $collectStates->getState("Начать");
+            if ($state != null) {
+                $state->_do($data);
+            } else {
+                log_msg("State is null");
+            }
+
+            log_msg("sucessMes2");
+
+            log_msg("after collect");
+
+            log_msg("dat = " . $data->object->message->text);
 
             echo('ok');
             break;
