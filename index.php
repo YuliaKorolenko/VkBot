@@ -5,6 +5,7 @@ use App\States\CollectStates;
 use App\States\StartState;
 use App\States\CreateState;
 use App\Classes\Users;
+use App\Databases\Database;
 
 require_once 'global.php';
 require_once 'keyboards.php';
