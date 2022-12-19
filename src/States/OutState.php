@@ -72,6 +72,6 @@ class OutState implements State
 
     public function getPreviousName(): string
     {
-        return ADD_WISH_LIST;
+        return ADD_WISH_LIST_STATE;
     }
 }

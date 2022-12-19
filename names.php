@@ -15,9 +15,7 @@ const STRING_OUT_STATE = "🌲Вы вышли из группы, чтобы за
 
 const START_STATE = "Начать";
 const CREATE_GROUP = "Создать группу";
-
 const ADD_GROUP = "Добавить группу";
-
-const ADD_WISH_LIST = "Добавить вишлист";
-
+const ADD_WISH_LIST_STATE = "Добавить вишлист";
 const OUT_STATE = "Выйти";
+const ENTER_GROUP_STATE = "Войти в группу";
