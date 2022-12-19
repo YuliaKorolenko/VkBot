@@ -3,6 +3,7 @@
 namespace App\States;
 
 use App\Classes\Participants;
+use App\Classes\Users;
 use App\Databases\Database;
 
 class AddParticipantState implements State
