@@ -40,7 +40,7 @@ class OutState implements State
             'peer_id' => $user_id,
             'access_token' => BOT_TOKEN,
             'random_id' => '0',
-            'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
+            'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
             'v' => '5.131',
         );
 

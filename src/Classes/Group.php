@@ -20,14 +20,7 @@ class Group
         $this->conn = $db;
     }
 
-    public function create()
-    {
-        log_msg("In function create");
-
-        $sqlQuery = "INSERT INTO 
-                    " . $this->db_table . " 
-                    (id, name, reg_open, price, created) 
-                    VALUES ('$this->id', '$this->name' , $this->reg_open, $this->price, '$this->created');";
+    private function request($sqlQuery){
 
         log_msg($sqlQuery);
 
@@ -40,6 +33,18 @@ class Group
 
         log_msg("false");
         return false;
+    }
+
+    public function create()
+    {
+        log_msg("In function create");
+
+        $sqlQuery = "INSERT INTO 
+                    " . $this->db_table . " 
+                    (id, name, reg_open, price, created) 
+                    VALUES ('$this->id', '$this->name' , $this->reg_open, $this->price, '$this->created');";
+
+        $this->request($sqlQuery);
     }
 
 }

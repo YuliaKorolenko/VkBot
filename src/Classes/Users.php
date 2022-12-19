@@ -21,14 +21,7 @@ class Users
         $this->conn = $db;
     }
 
-    public function create()
-    {
-        log_msg("In function create users");
-
-        $sqlQuery = "INSERT INTO 
-                    " . $this->db_table . " 
-                    (id, state_number) 
-                    VALUES ($this->id, '$this->state_number');";
+    private function request($sqlQuery){
 
         log_msg($sqlQuery);
 
@@ -43,6 +36,18 @@ class Users
         return false;
     }
 
+    public function create()
+    {
+        log_msg("In function create users");
+
+        $sqlQuery = "INSERT INTO 
+                    " . $this->db_table . " 
+                    (id, state_number) 
+                    VALUES ($this->id, '$this->state_number');";
+
+        $this->request($sqlQuery);
+    }
+
     public function update()
     {
         $sqlQuery = "UPDATE 
@@ -50,17 +55,7 @@ class Users
                     SET state_number = '$this->state_number'
                     WHERE id = $this->id;";
 
-        log_msg($sqlQuery);
-
-        $stmt = $this->conn->prepare($sqlQuery);
-
-        if ($stmt->execute()) {
-            log_msg("true");
-            return true;
-        }
-
-        log_msg("false");
-        return false;
+        $this->request($sqlQuery);
 
     }
 
@@ -71,19 +66,7 @@ class Users
                     " . $this->db_table . " 
                     WHERE id= $this->id;";
 
-        log_msg($sqlQuery);
-
-        $stmt = $this->conn->prepare($sqlQuery);
-
-
-        if ($stmt->execute()) {
-            log_msg("true");
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->state_number=$row['state_number'];
-            return true;
-        }
-        log_msg("false");
-        return false;
+        $this->request($sqlQuery);
     }
 
 }
