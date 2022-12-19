@@ -14,7 +14,22 @@ class AddParticipantState implements State
 
     public function changeState($data)
     {
-        // TODO: Implement changeState() method.
+        $user_id = $data->object->message->from_id;
+
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $user = new Users($db);
+        $user->id = $user_id;
+        $user->state_number = $this->getName();
+
+        if ($user->update()) {
+            log_msg("User updated successfully.");
+        } else {
+            log_msg("User could not be updated.");
+        }
+
+        $this->_do($data);
     }
 
     public function _do($data)
@@ -25,11 +40,11 @@ class AddParticipantState implements State
 
         $participant = new Participants($db);
 
-        $participant->user_id=$user_id;
-        $participant->group_id=$data->object->message->text;
-        $participant->is_active=1;
-        $participant->is_creator=0;
-        $participant->wish_list="";
+        $participant->user_id = $user_id;
+        $participant->group_id = $data->object->message->text;
+        $participant->is_active = 1;
+        $participant->is_creator = 0;
+        $participant->wish_list = "";
 
         if ($participant->create()) {
             log_msg("Participant created successfully.");
@@ -38,7 +53,7 @@ class AddParticipantState implements State
         }
 
         $request_params = array(
-            'message' =>  STRING_ADD,
+            'message' => STRING_ADD,
             'peer_id' => $user_id,
             'access_token' => BOT_TOKEN,
             'random_id' => '0',
