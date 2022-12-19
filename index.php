@@ -55,11 +55,11 @@ function callback_events()
 
             $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
-                if ($state->getPreviousName() == $user->getNumberState()){
-                    $state->changeState($data);
-                } else {
-                    log_msg("Problem");
-                }
+                $state->changeState($data);
+//                if ($state->getPreviousName() == $user->getNumberState()){
+//                } else {
+//                    log_msg("Problem");
+//                }
             } else {
                 $state = $collectStates->getStateByPrev($user->state_number);
                 $state->changeState($data);
