@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `MyGroup` (
-    `id` varchar(8) NOT NULL,
+    `id` varchar(256) NOT NULL,
     `name` varchar(256) NOT NULL,
     `reg_open` INT ZEROFILL,
     `price` int(1) ZEROFILL,
