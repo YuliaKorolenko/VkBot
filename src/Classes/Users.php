@@ -64,7 +64,7 @@ class Users
 
     }
 
-    public function getState()
+    public function getNumberState()
     {
         $sqlQuery = "SELECT state_number
                     FROM 
@@ -78,13 +78,10 @@ class Users
 
         if ($stmt->execute()) {
             log_msg("true");
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->state_number=$row['state_number'];
             return true;
         }
-
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $this->state_number=$row['state_number'];;
-
         log_msg("false");
         return false;
     }

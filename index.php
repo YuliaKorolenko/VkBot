@@ -61,7 +61,7 @@ function callback_events()
             $user = new Users($db);
             $user->id = $data->object->message->from_id;
 
-            if ($user->getState()) {
+            if ($user->getNumberState()) {
                 log_msg("GetState created successfully.");
                 log_msg($user->state_number);
             } else {
