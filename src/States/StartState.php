@@ -15,7 +15,8 @@ class StartState implements State
         log_msg("StartState");
     }
 
-    public function _do($data)
+
+    public function changeState($data)
     {
         log_msg("sucessDo");
         $user_id = $data->object->message->from_id;
@@ -34,6 +35,13 @@ class StartState implements State
         } else {
             log_msg("User could not be created.");
         }
+
+        $this->_do($data);
+    }
+
+    public function _do($data)
+    {
+        $user_id = $data->object->message->from_id;
 
         $request_params = array(
             'message' => STRING_START,
@@ -64,4 +72,5 @@ class StartState implements State
     {
         // TODO: Implement _error() method.
     }
+
 }

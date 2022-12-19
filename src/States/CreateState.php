@@ -8,11 +8,7 @@ use App\Databases\Database;
 class CreateState implements State
 {
 
-    public function __construct()
-    {
-    }
-
-    public function _do($data)
+    public function changeState($data)
     {
         $user_id = $data->object->message->from_id;
 
@@ -28,6 +24,16 @@ class CreateState implements State
         } else {
             log_msg("User could not be updated.");
         }
+
+        $this->_do($data);
+    }
+    public function __construct()
+    {
+    }
+
+    public function _do($data)
+    {
+        $user_id = $data->object->message->from_id;
 
         $request_params = array(
             'message' => STRING_CREATE,

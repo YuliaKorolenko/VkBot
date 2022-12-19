@@ -3,11 +3,31 @@
 namespace App\States;
 
 use App\Classes\Group;
+use App\Classes\Users;
 use App\Databases\Database;
 
 class AddGroupState implements State
 {
 
+    public function changeState($data)
+    {
+        $user_id = $data->object->message->from_id;
+
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $user = new Users($db);
+        $user->id = $user_id;
+        $user->state_number=$this->getName();
+
+        if ($user->update()) {
+            log_msg("User updated successfully.");
+        } else {
+            log_msg("User could not be updated.");
+        }
+
+        $this->_do($data);
+    }
     public function __construct()
     {
     }
@@ -58,4 +78,6 @@ class AddGroupState implements State
     {
         // TODO: Implement _error() method.
     }
+
+
 }

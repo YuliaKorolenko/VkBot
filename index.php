@@ -56,14 +56,14 @@ function callback_events()
             $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
                 if ($state->getPreviousName() == $user->getNumberState()){
-                    $state->_do($data);
+                    $state->changeState($data);
                 } else {
                     $statePrev = $collectStates->getState($user->getNumberState());
                     $statePrev->_error($data);
                 }
             } else {
                 $state = $collectStates->getStateByPrev($user->state_number);
-                $state->_do($data);
+                $state->changeState($data);
             }
 
             log_msg("sucessMes2");
