@@ -174,14 +174,13 @@ class Participants
         $stmt->execute();
 
         $participants = array();
-        $participants["body"] = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $e = array(
                 "user_id" => $user_id,
                 "wish_list" => $wish_list
             );
-            $participants["body"][] = $e;
+            $participants[] = $e;
         }
 
         return $participants;
