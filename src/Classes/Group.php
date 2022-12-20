@@ -46,7 +46,7 @@ class Group
 
         $sqlQuery = "SELECT
                      FROM " . $this->db_table . " 
-                     WHERE id = $this->id;";
+                     WHERE id = '$this->id';";
 
         log_msg($sqlQuery);
 

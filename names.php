@@ -17,7 +17,7 @@ const ENTER_SECRET_NAME = "☃️Введите секретное имя гру
 
 const RIGHT_CHECK_ENTER = "☃️Секретное имя было введено верно. Теперь введите свой вишлист, который увидит ваш Тайный Санта.";
 
-const WRONG_CHECKER_ENTER = "☃️Секретное имя было введено верно. Попробуйте еще раз.";
+const WRONG_CHECKER_ENTER = "☃️Секретное имя было введено неверно.";
 
 const START_STATE = "Начать";
 const CREATE_GROUP = "Создать группу";
