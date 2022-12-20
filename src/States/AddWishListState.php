@@ -9,10 +9,6 @@ use App\Databases\Database;
 class AddWishListState extends BaseState implements State
 {
 
-    public function __construct()
-    {
-    }
-
     public function changeState($data)
     {
         $this->change($data, $this->getName());

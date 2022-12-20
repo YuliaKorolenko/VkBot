@@ -12,10 +12,6 @@ class CheckEnterState extends BaseState  implements State
     protected $keyboard;
     protected $phrase;
 
-    public function __construct()
-    {
-    }
-
     public function changeState($data)
     {
         $this->change($data, $this->getName());

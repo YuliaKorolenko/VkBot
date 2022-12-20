@@ -15,10 +15,6 @@ class AddGroupState extends BaseState  implements State
         $this->change($data, $this->getName());
         $this->_do($data);
     }
-    public function __construct()
-    {
-
-    }
 
     public function _do($data)
     {

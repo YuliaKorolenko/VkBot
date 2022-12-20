@@ -10,9 +10,6 @@ use App\Databases\Database;
 class EnterGroupState extends BaseState implements State
 {
 
-    public function __construct()
-    {
-    }
 
     public function changeState($data)
     {

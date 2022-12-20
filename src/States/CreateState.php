@@ -13,9 +13,6 @@ class CreateState extends BaseState implements State
         $this->_do($data);
     }
 
-    public function __construct()
-    {
-    }
 
     public function _do($data)
     {

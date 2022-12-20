@@ -10,9 +10,8 @@ class BaseState
     protected $keyboard;
     protected $phrase;
 
-    public function __construct($keyboard)
+    public function __construct()
     {
-        $this->keyboard = $keyboard;
     }
 
     public function change($data, $stateName)
@@ -25,7 +24,7 @@ class BaseState
 
         $user = new Users($db);
         $user->id = $user_id;
-        $user->state_number=$stateName;
+        $user->state_number= $stateName;
 
         if ($user->update()) {
             log_msg("WishList change successfully.");

@@ -9,13 +9,6 @@ require_once 'global.php';
 
 class StartState extends BaseState implements State
 {
-
-    public function __construct()
-    {
-        log_msg("StartState");
-    }
-
-
     public function changeState($data)
     {
         $this->change($data, $this->getName());
