@@ -60,6 +60,8 @@ function callback_events()
                 $user->create();
             }
 
+            $user->getNumberState();
+
             $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
                 if (in_array($user->state_number, $state->getPreviousNames())){
