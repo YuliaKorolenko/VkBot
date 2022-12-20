@@ -91,6 +91,8 @@ class Participants
                     WHERE user_id = $this->user_id
                     AND group_id = '$this->group_id';";
 
+        log_msg($sqlQuery);
+
         $stmt = $this->conn->prepare($sqlQuery);
 
         if ($stmt->execute()) {
