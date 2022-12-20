@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use PDO;
+
 require_once 'global.php';
 class Participants
 {
