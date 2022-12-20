@@ -65,7 +65,7 @@ class StartState implements State
 
     public function getPreviousNames(): array
     {
-        return array(OUT_STATE, START_STATE);
+        return array(OUT_STATE, START_STATE, START_STATE);
     }
 
     public function _error($data)
