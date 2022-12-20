@@ -54,7 +54,7 @@ class AddWishListState implements State
         $participant->isCreator();
         log_msg("beforeUpdate");
         $participant->update();
-        
+
         if ($participant->is_creator == 1) {
             $request_params = array(
                 'message' => STRING_WISH_LIST,

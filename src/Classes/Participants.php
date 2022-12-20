@@ -144,7 +144,7 @@ class Participants
         if ($stmt->execute()) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->group_id=$row['group_id'];
-            return $this->is_creator;
+            return true;
         }
 
         return false;
