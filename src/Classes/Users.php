@@ -72,14 +72,15 @@ class Users
         $stmt = $this->conn->prepare($sqlQuery);
 
 
-
+        $result = $this->mysqli->query($sqlQuery);
         if ($stmt->execute()) {
             log_msg("COUNT");
-            $count = $stmt->rowCount;
+            $count = $result->num_rows;
             log_msg($count);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->state_number=$row['state_number'];
+            log_msg($this->state_number);
             return $count;
         }
 
