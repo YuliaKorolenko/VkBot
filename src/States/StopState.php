@@ -71,6 +71,6 @@ class StopState extends BaseState implements State
 
     public function getPreviousNames(): array
     {
-        return array(ADD_WISH_LIST_STATE);
+        return array(ADD_WISH_LIST_STATE, START_STATE);
     }
 }
