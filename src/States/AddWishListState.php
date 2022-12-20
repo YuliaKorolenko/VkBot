@@ -40,7 +40,6 @@ class AddWishListState implements State
         $user_id = $data->object->message->from_id;
 
         $database = new Database();
-
         $db = $database->getConnection();
 
         $participant = new Participants($db);
@@ -50,10 +49,11 @@ class AddWishListState implements State
 
         log_msg("Before Find");
         $participant->findGroupId();
+
         log_msg("beforeCreator");
-        $participant->isCreator();
-        log_msg("beforeUpdate");
-        $participant->update();
+//        $participant->isCreator();
+//        log_msg("beforeUpdate");
+//        $participant->update();
 
         if ($participant->is_creator == 1) {
             $request_params = array(

@@ -144,9 +144,11 @@ class Participants
         if ($stmt->execute()) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->group_id=$row['group_id'];
+            log_msg("true");
             return true;
         }
 
+        log_msg(false);
         return false;
     }
 
