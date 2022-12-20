@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
 CREATE TABLE IF NOT EXISTS `Participants` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `user_id` INT NOT NULL,
-    `group_id` varchar(8) NOT NULL,
+    `group_id` varchar(256) NOT NULL,
     `is_creator` INT,
     `wish_list` varchar(256) NOT NULL,
     `is_active` INT,

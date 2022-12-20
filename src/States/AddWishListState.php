@@ -15,6 +15,7 @@ class AddWishListState implements State
 
     public function changeState($data)
     {
+
         $user_id = $data->object->message->from_id;
 
         $database = new Database();
@@ -47,6 +48,7 @@ class AddWishListState implements State
         $participant->wish_list = $data->object->message->text;
         $participant->is_active = 1;
 
+        $participant->findGroupId();
         $participant->isCreator();
         $participant->update();
         if ($participant->is_creator == 1) {

@@ -127,4 +127,28 @@ class Participants
         return false;
     }
 
+    public function findGroupId(){
+        log_msg("In function findGroup");
+
+        $sqlQuery = "SELECT group_id
+                    FROM 
+                    " . $this->db_table . " 
+                    WHERE user_id= $this->user_id
+                    AND   is_active = 1;";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->group_id=$row['group_id'];
+            return $this->is_creator;
+        }
+
+        return false;
+    }
+
+
+
 }
