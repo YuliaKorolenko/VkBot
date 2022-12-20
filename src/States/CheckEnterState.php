@@ -44,15 +44,7 @@ class CheckEnterState implements State
         $user_id = $data->object->message->from_id;
 
         if ($group->find() == 1) {
-            $request_params = array(
-                'message' => RIGHT_CHECK_ENTER,
-                'peer_id' => $user_id,
-                'access_token' => BOT_TOKEN,
-                'random_id' => '0',
-                'keyboard' => json_encode(ENTER_KEYBOARD, JSON_UNESCAPED_UNICODE),
-                'v' => '5.131',
-            );
-//            проверка на то существует ли participant
+
             $participant = new Participants($db);
             $participant->id=$user_id;
             $participant->group_id=$data->object->message->text;
@@ -60,7 +52,39 @@ class CheckEnterState implements State
             $participant->wish_list="";
             $participant->is_creator=0;
 
-            $participant->create();
+            if ($participant->find() == 0){
+                $participant->create();
+                $request_params = array(
+                    'message' => RIGHT_CHECK_ENTER,
+                    'peer_id' => $user_id,
+                    'access_token' => BOT_TOKEN,
+                    'random_id' => '0',
+                    'keyboard' => json_encode(ENTER_KEYBOARD, JSON_UNESCAPED_UNICODE),
+                    'v' => '5.131',
+                );
+            } else {
+//            не позволяет повторного захождения в группу
+                $request_params = array(
+                    'message' => ALREADY_IN_GROUP,
+                    'peer_id' => $user_id,
+                    'access_token' => BOT_TOKEN,
+                    'random_id' => '0',
+                    'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
+                    'v' => '5.131',
+                );
+
+                $user = new Users($db);
+                $user->id = $user_id;
+                $user->state_number = START_STATE;
+
+                if ($user->update()) {
+                    log_msg("User updated successfully.");
+                } else {
+                    log_msg("User could not be updated.");
+                }
+            }
+
+
 
 
         } else {

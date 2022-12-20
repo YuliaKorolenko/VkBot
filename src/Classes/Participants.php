@@ -83,4 +83,24 @@ class Participants
         return false;
     }
 
+    public function find(){
+        log_msg("In function update participants");
+
+        $sqlQuery = "SELECT COUNT(*) FROM
+                    " . $this->db_table . " 
+                    WHERE user_id = $this->user_id
+                    AND group_id = '$this->group_id';";
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            log_msg("COUNT");
+            $count = $stmt->fetchColumn();
+            log_msg($count);
+            return $count;
+        }
+
+        return -1;
+    }
+
 }
