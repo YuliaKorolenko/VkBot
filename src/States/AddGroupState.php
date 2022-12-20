@@ -31,6 +31,7 @@ class AddGroupState implements State
     }
     public function __construct()
     {
+
     }
 
     public function _do($data)
