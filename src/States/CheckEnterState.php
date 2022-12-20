@@ -46,10 +46,9 @@ class CheckEnterState implements State
         $user_id = $data->object->message->from_id;
 
         if ($group->find() == 1) {
-            log_msg("Groupright");
 
             $participant = new Participants($db);
-            $participant->id = $user_id;
+            $participant->user_id = $user_id;
             $participant->group_id = $data->object->message->text;
             $participant->is_active = 1;
             $participant->wish_list = "";
