@@ -3,6 +3,7 @@
 namespace App\States;
 
 use App\Classes\Group;
+use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
@@ -51,10 +52,15 @@ class CheckEnterState implements State
                 'keyboard' => json_encode(ENTER_KEYBOARD, JSON_UNESCAPED_UNICODE),
                 'v' => '5.131',
             );
+//            проверка на то существует ли participant
+            $participant = new Participants($db);
+            $participant->id=$user_id;
+            $participant->is_active=1;
+            $participant->wish_list="";
+            $participant->is_creator=0;
 
-            log_msg("After find");
-            $add = new AddParticipantState();
-            $add->changeState($data);
+            $participant->create();
+
 
         } else {
             $request_params = array(
@@ -65,6 +71,16 @@ class CheckEnterState implements State
                 'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
                 'v' => '5.131',
             );
+
+            $user = new Users($db);
+            $user->id = $user_id;
+            $user->state_number = START_STATE;
+
+            if ($user->update()) {
+                log_msg("User updated successfully.");
+            } else {
+                log_msg("User could not be updated.");
+            }
         }
 
         $get_params = http_build_query($request_params);
