@@ -30,7 +30,7 @@ class CollectStates
     {
         log_msg("getStateByPrevStart");
         foreach ($this->states as $state) {
-            if ($name == $state->getPreviousName()) {
+            if (in_array($name, $state->getPreviousName())) {
                 return $state;
             }
         }
