@@ -47,12 +47,8 @@ class AddWishListState implements State
         $participant->wish_list = $data->object->message->text;
         $participant->is_active = 1;
 
-        log_msg("Before Find");
         $participant->findGroupId();
-
-        log_msg("beforeCreator");
         $participant->isCreator();
-        log_msg("beforeUpdate");
         $participant->update();
 
         if ($participant->is_creator == 1) {

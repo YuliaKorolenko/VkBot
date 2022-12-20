@@ -7,7 +7,7 @@ use App\Databases\Database;
 
 require_once 'global.php';
 
-class StartState implements State
+class StartState extends BaseState implements State
 {
 
     public function __construct()
@@ -18,24 +18,7 @@ class StartState implements State
 
     public function changeState($data)
     {
-        log_msg("sucessDo");
-        $user_id = $data->object->message->from_id;
-
-        $database = new Database();
-        $db = $database->getConnection();
-
-        log_msg($user_id);
-
-        $user = new Users($db);
-        $user->id = $user_id;
-        $user->state_number = $this->getName();
-
-        if ($user->create()) {
-            log_msg("User created successfully.");
-        } else {
-            log_msg("User could not be created.");
-        }
-
+        $this->change($data, $this->getName());
         $this->_do($data);
     }
 

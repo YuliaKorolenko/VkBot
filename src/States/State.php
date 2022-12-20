@@ -8,8 +8,6 @@ require_once 'names.php';
 
 interface State
 {
-    public function __construct();
-
     public function changeState($data);
 
     public function _do($data);
