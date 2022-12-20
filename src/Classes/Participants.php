@@ -172,6 +172,8 @@ class Participants
                     " . $this->db_table . " 
                     WHERE group_id= $this->group_id;";
 
+        log_msg($sqlQuery);
+
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
 
