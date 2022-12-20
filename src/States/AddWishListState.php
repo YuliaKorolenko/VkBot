@@ -45,16 +45,15 @@ class AddWishListState implements State
         $participant = new Participants($db);
         $participant->user_id = $user_id;
         $participant->wish_list = $data->object->message->text;
-        $participant->group_id = "Руки";
         $participant->is_active = 1;
 
         log_msg("Before Find");
         $participant->findGroupId();
 
         log_msg("beforeCreator");
-//        $participant->isCreator();
-//        log_msg("beforeUpdate");
-//        $participant->update();
+        $participant->isCreator();
+        log_msg("beforeUpdate");
+        $participant->update();
 
         if ($participant->is_creator == 1) {
             $request_params = array(
