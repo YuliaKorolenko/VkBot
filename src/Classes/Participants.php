@@ -170,7 +170,7 @@ class Participants
                     user_id, wish_list
                     FROM 
                     " . $this->db_table . " 
-                    WHERE group_id= $this->group_id;";
+                    WHERE group_id= '$this->group_id';";
 
         log_msg($sqlQuery);
 
