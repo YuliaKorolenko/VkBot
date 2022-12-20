@@ -15,6 +15,7 @@ class AddParticipantState implements State
 
     public function changeState($data)
     {
+        log_msg("inParticipantchangeState");
         $user_id = $data->object->message->from_id;
 
         $database = new Database();
@@ -35,6 +36,7 @@ class AddParticipantState implements State
 
     public function _do($data)
     {
+        log_msg("inParticipantDO");
         $user_id = $data->object->message->from_id;
         $database = new Database();
         $db = $database->getConnection();
