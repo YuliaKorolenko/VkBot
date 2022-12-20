@@ -1,7 +1,8 @@
 <?php
 
 
-use App\States\AddParticipantState;
+use App\States\CheckEnterState;
+use App\States\EnterGroupState;
 use App\States\AddWishListState;
 use App\States\CollectStates;
 use App\States\StartState;
@@ -42,7 +43,8 @@ function callback_events()
                 new AddGroupState(),
                 new AddWishListState(),
                 new OutState(),
-                new AddParticipantState()
+                new EnterGroupState(),
+                new CheckEnterState()
             );
 
             log_msg("dat = " . $data->object->message->text);
@@ -63,8 +65,11 @@ function callback_events()
 
             $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
-                log_msg("byName");
-                $state->changeState($data);
+                if (in_array($user->state_number, $state->getPreviousNames())){
+                    $state->changeState($data);
+                } else {
+                    log_msg("problem");
+                }
             } else {
                 log_msg("State number of user");
                 log_msg($user->state_number);

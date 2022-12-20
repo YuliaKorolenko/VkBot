@@ -30,3 +30,14 @@ const CREATE_KEYBOARD = [
             "label" => "Выйти"],
             "color" => "secondary"],
     ]]];
+
+
+const ENTER_KEYBOARD = [
+    "one_time" => false,
+    "buttons" => [[
+        ["action" => [
+            "type" => "text",
+            "payload" => "{\"button\": \"out\"}",
+            "label" => "Выйти"],
+            "color" => "secondary"],
+    ]]];

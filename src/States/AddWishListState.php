@@ -72,8 +72,8 @@ class AddWishListState implements State
         return ADD_WISH_LIST_STATE;
     }
 
-    public function getPreviousName(): string
+    public function getPreviousNames(): array
     {
-        return ADD_GROUP;
+        return array(ADD_GROUP);
     }
 }

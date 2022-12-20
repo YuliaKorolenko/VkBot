@@ -2,38 +2,33 @@
 
 namespace App\States;
 
+use App\Classes\Group;
+use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
-require_once 'global.php';
-
-class StartState implements State
+class EnterGroupState implements State
 {
 
     public function __construct()
     {
-        log_msg("StartState");
     }
-
 
     public function changeState($data)
     {
-        log_msg("sucessDo");
         $user_id = $data->object->message->from_id;
 
         $database = new Database();
         $db = $database->getConnection();
 
-        log_msg($user_id);
-
         $user = new Users($db);
         $user->id = $user_id;
         $user->state_number = $this->getName();
 
-        if ($user->create()) {
-            log_msg("User created successfully.");
+        if ($user->update()) {
+            log_msg("User updated successfully.");
         } else {
-            log_msg("User could not be created.");
+            log_msg("User could not be updated.");
         }
 
         $this->_do($data);
@@ -44,11 +39,11 @@ class StartState implements State
         $user_id = $data->object->message->from_id;
 
         $request_params = array(
-            'message' => STRING_START,
+            'message' => ENTER_SECRET_NAME,
             'peer_id' => $user_id,
             'access_token' => BOT_TOKEN,
             'random_id' => '0',
-            'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
+            'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
             'v' => '5.131',
         );
 
@@ -56,21 +51,18 @@ class StartState implements State
         file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
     }
 
-
-    public function getName(): string
-    {
-        return START_STATE;
-    }
-
-
-    public function getPreviousNames(): array
-    {
-        return array(OUT_STATE, START_STATE);
-    }
-
     public function _error($data)
     {
         // TODO: Implement _error() method.
     }
 
+    public function getName(): string
+    {
+        return ENTER_GROUP_STATE;
+    }
+
+    public function getPreviousNames(): array
+    {
+        return array(START_STATE);
+    }
 }

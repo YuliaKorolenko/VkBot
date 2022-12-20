@@ -85,9 +85,9 @@ class AddGroupState implements State
         return ADD_GROUP;
     }
 
-    public function getPreviousName(): string
+    public function getPreviousNames(): array
     {
-        return CREATE_GROUP;
+        return array(CREATE_GROUP);
     }
 
     public function _error($data)

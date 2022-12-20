@@ -70,8 +70,8 @@ class OutState implements State
         return OUT_STATE;
     }
 
-    public function getPreviousName(): string
+    public function getPreviousNames(): array
     {
-        return ADD_WISH_LIST_STATE;
+        return array(ADD_WISH_LIST_STATE);
     }
 }

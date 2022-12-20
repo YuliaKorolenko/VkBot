@@ -53,9 +53,9 @@ class CreateState implements State
         return CREATE_GROUP;
     }
 
-    public function getPreviousName(): string
+    public function getPreviousNames(): array
     {
-        return START_STATE;
+        return array(START_STATE);
     }
 
     public function _error($data)

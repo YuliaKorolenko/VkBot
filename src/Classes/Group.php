@@ -40,4 +40,23 @@ class Group
         return false;
     }
 
+    public function find()
+    {
+        log_msg("In function create");
+
+        $sqlQuery = "SELECT
+                     FROM " . $this->db_table . " 
+                     WHERE id = $this->id;";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return $stmt->rowCount();
+        }
+
+        return false;
+    }
+
 }

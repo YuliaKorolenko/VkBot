@@ -18,6 +18,6 @@ interface State
 
     public function getName(): string;
 
-    public function getPreviousName(): string;
+    public function getPreviousNames(): array;
 
 }
