@@ -6,7 +6,7 @@ use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
-class AddWishListState implements State
+class AddWishListState extends BaseState implements State
 {
 
     public function __construct()

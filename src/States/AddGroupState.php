@@ -7,7 +7,7 @@ use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
-class AddGroupState implements State
+class AddGroupState extends BaseState  implements State
 {
 
     public function changeState($data)

@@ -7,7 +7,7 @@ use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
-class EnterGroupState implements State
+class EnterGroupState extends BaseState implements State
 {
 
     public function __construct()

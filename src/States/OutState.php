@@ -6,7 +6,7 @@ use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
-class OutState implements State
+class OutState extends BaseState  implements State
 {
 
     public function __construct()

@@ -7,7 +7,7 @@ use App\Classes\Participants;
 use App\Classes\Users;
 use App\Databases\Database;
 
-class CheckEnterState implements State
+class CheckEnterState extends BaseState  implements State
 {
     protected $keyboard;
     protected $phrase;
