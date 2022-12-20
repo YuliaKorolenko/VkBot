@@ -5,6 +5,7 @@ namespace App\Classes;
 use PDO;
 
 require_once 'global.php';
+
 class Participants
 {
     private $conn;
@@ -46,7 +47,8 @@ class Participants
         return false;
     }
 
-    public function update(){
+    public function update()
+    {
         log_msg("In function update participants");
 
         $sqlQuery = "UPDATE 
@@ -67,7 +69,8 @@ class Participants
         return false;
     }
 
-    public function changeActive(){
+    public function changeActive()
+    {
         log_msg("In function update participants");
 
         $sqlQuery = "UPDATE 
@@ -86,7 +89,8 @@ class Participants
         return false;
     }
 
-    public function find(){
+    public function find()
+    {
         log_msg("In function update participants");
 
         $sqlQuery = "SELECT COUNT(*) FROM
@@ -108,7 +112,8 @@ class Participants
         return -1;
     }
 
-    public function isCreator(){
+    public function isCreator()
+    {
         log_msg("In function update participants");
 
         $sqlQuery = "SELECT is_creator
@@ -123,14 +128,15 @@ class Participants
 
         if ($stmt->execute()) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->is_creator=$row['is_creator'];
+            $this->is_creator = $row['is_creator'];
             return $this->is_creator;
         }
 
         return false;
     }
 
-    public function findGroupId(){
+    public function findGroupId()
+    {
         log_msg("In function findGroup");
 
         $sqlQuery = "SELECT group_id
@@ -145,13 +151,89 @@ class Participants
 
         if ($stmt->execute()) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->group_id=$row['group_id'];
+            $this->group_id = $row['group_id'];
             log_msg("true");
             return true;
         }
 
         log_msg(false);
         return false;
+    }
+
+
+    public function getParticipants()
+    {
+        log_msg("In function findGroup");
+
+        $sqlQuery = "SELECT *
+                    FROM 
+                    " . $this->db_table . " 
+                    WHERE group_id= $this->group_id;";
+
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->execute();
+
+        $participants = array();
+        $participants["body"] = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $e = array(
+                "user_id" => $user_id,
+                "wish_list" => $wish_list
+            );
+            $participants["body"][] = $e;
+        }
+
+        return $participants;
+
+
+    }
+
+    public function findGroupIdByCreator()
+    {
+        log_msg("In function findGroup");
+
+        $sqlQuery = "SELECT group_id
+                    FROM 
+                    " . $this->db_table . " 
+                    WHERE user_id= $this->user_id
+                    AND   is_creator = 1;";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->group_id = $row['group_id'];
+            log_msg("true");
+            return true;
+        }
+
+        log_msg(false);
+        return false;
+    }
+
+    public function findPartCount()
+    {
+        log_msg("In function update participants");
+
+        $sqlQuery = "SELECT COUNT(*) FROM
+                    " . $this->db_table . " 
+                    WHERE group_id = '$this->group_id';";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            log_msg("COUNT");
+            $count = $stmt->fetchColumn();
+            log_msg($count);
+            return $count;
+        }
+
+        return -1;
     }
 
 

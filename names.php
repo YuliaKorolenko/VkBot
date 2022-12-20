@@ -21,6 +21,8 @@ const WRONG_CHECKER_ENTER = "☃️Секретное имя было введе
 
 const ALREADY_IN_GROUP = "🌲Вы уже зарегистрированы в этой группе. Ждите окончания регистрации.";
 
+const STOP = "\n 🎅🏼Пожелания:";
+
 const START_STATE = "Начать";
 const CREATE_GROUP = "Создать группу";
 const ADD_GROUP = "Добавить группу";
@@ -28,8 +30,10 @@ const ADD_WISH_LIST_STATE = "Добавить вишлист";
 const OUT_STATE = "Выйти";
 const ENTER_GROUP_STATE = "Войти в группу";
 const CHECK_ENTER_STATE = "Проверка";
-
 const STOP_STATE = "Остановить регистрацию";
 
 const ADD_PARTICIPANT_STATE = "Добавить участника";
+
+const LINK = "https://vk/com/id";
+
 

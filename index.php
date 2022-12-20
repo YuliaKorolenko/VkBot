@@ -11,6 +11,7 @@ use App\Classes\Users;
 use App\Databases\Database;
 use App\States\AddGroupState;
 use App\States\OutState;
+use App\States\StopState;
 
 require_once 'global.php';
 require_once 'keyboards.php';
@@ -44,7 +45,8 @@ function callback_events()
                 new AddWishListState(),
                 new OutState(),
                 new EnterGroupState(),
-                new CheckEnterState()
+                new CheckEnterState(),
+                new StopState()
             );
 
             log_msg("dat = " . $data->object->message->text);
