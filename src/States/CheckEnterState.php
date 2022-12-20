@@ -78,6 +78,6 @@ class CheckEnterState implements State
 
     public function getPreviousNames(): array
     {
-        return array(ENTER_GROUP_STATE);
+        return array(ENTER_GROUP_STATE, CHECK_ENTER_STATE);
     }
 }
