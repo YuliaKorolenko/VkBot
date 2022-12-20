@@ -7,12 +7,12 @@ use App\Databases\Database;
 
 class CreateState extends BaseState implements State
 {
-
     public function changeState($data)
     {
         $this->change($data, $this->getName());
         $this->_do($data);
     }
+
     public function __construct()
     {
     }

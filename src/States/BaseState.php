@@ -17,6 +17,7 @@ class BaseState
 
     public function change($data, $stateName)
     {
+        log_msg("INCHANGE");
         $user_id = $data->object->message->from_id;
 
         $database = new Database();
@@ -24,7 +25,7 @@ class BaseState
 
         $user = new Users($db);
         $user->id = $user_id;
-        $user->state_number=$this->$stateName;
+        $user->state_number=$stateName;
 
         if ($user->update()) {
             log_msg("WishList change successfully.");
