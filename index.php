@@ -61,6 +61,7 @@ function callback_events()
             }
 
             $user->getNumberState();
+            log_msg($user->state_number);
 
             $state = $collectStates->getState($data->object->message->text);
             if ($state != null) {
