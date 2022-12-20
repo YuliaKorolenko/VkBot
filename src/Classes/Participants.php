@@ -15,6 +15,7 @@ class Participants
     // Columns
 
     public $id;
+
     public $user_id;
     public $group_id;
     public $is_creator;
@@ -165,7 +166,8 @@ class Participants
     {
         log_msg("In function findGroup");
 
-        $sqlQuery = "SELECT *
+        $sqlQuery = "SELECT 
+                    user_id, wish_list
                     FROM 
                     " . $this->db_table . " 
                     WHERE group_id= $this->group_id;";
@@ -173,17 +175,9 @@ class Participants
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
 
-        $participants = array();
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            extract($row);
-            $e = array(
-                "user_id" => $user_id,
-                "wish_list" => $wish_list
-            );
-            $participants[] = $e;
-        }
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $participants;
+
 
 
     }

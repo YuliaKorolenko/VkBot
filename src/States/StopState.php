@@ -30,6 +30,7 @@ class StopState extends BaseState implements State
         log_msg($participant->group_id);
         $n = $participant->findPartCount();
         log_msg($n);
+
         $participants = $participant->getParticipants();
 
         $arr = array($n);
@@ -38,7 +39,7 @@ class StopState extends BaseState implements State
         }
         shuffle($arr);
 
-        for ($i = 1; $i < $n; $i++) {
+        for ($i = 0; $i < $n; $i++) {
             $santa = $participants[$arr[$i]];
             log_msg($santa["user_id"]);
             $ward = $participants[$arr[($i + 1) % $n]];
