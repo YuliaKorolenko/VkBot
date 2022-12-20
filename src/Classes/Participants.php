@@ -51,7 +51,8 @@ class Participants
                     " . $this->db_table . " 
                     SET wish_list = '$this->wish_list'
                     WHERE user_id = $this->user_id
-                    AND is_active = 1;";
+                    AND is_active = 1
+                    AND group_id = '$this->group_id';";
 
         log_msg($sqlQuery);
 
