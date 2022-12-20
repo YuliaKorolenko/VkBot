@@ -76,6 +76,6 @@ class AddWishListState implements State
 
     public function getPreviousNames(): array
     {
-        return array(ADD_GROUP);
+        return array(ADD_GROUP, CHECK_ENTER_STATE);
     }
 }
