@@ -55,6 +55,7 @@ class CheckEnterState implements State
 //            проверка на то существует ли participant
             $participant = new Participants($db);
             $participant->id=$user_id;
+            $participant->group_id=$data->object->message->text;
             $participant->is_active=1;
             $participant->wish_list="";
             $participant->is_creator=0;
