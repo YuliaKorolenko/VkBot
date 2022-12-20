@@ -40,9 +40,9 @@ class StopState extends BaseState implements State
 
         for ($i = 1; $i < $n; $i++) {
             $santa = $participants[$arr[$i]];
-            log_msg($santa);
+            log_msg($santa["user_id"]);
             $ward = $participants[$arr[($i + 1) % $n]];
-            log_msg($ward);
+            log_msg($ward["user_id"]);
             $request_params = array(
                 'message' => LINK . $ward["user_id"] . STOP . $ward["wish_list"],
                 'peer_id' => $santa["user_id"],
