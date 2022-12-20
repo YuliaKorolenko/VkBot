@@ -55,7 +55,7 @@ class CreateState implements State
 
     public function getPreviousNames(): array
     {
-        return array(START_STATE);
+        return array(START_STATE, OUT_STATE);
     }
 
     public function _error($data)
