@@ -44,7 +44,7 @@ class Group
     {
         log_msg("In function create");
 
-        $sqlQuery = "SELECT
+        $sqlQuery = "SELECT *
                      FROM " . $this->db_table . " 
                      WHERE id = '$this->id';";
 
