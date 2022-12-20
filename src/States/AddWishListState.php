@@ -47,16 +47,27 @@ class AddWishListState implements State
         $participant->wish_list = $data->object->message->text;
         $participant->is_active = 1;
 
+        $participant->isCreator();
         $participant->update();
-
-        $request_params = array(
-            'message' => STRING_WISH_LIST,
-            'peer_id' => $user_id,
-            'access_token' => BOT_TOKEN,
-            'random_id' => '0',
-            'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
-            'v' => '5.131',
-        );
+        if ($participant->is_creator == 1) {
+            $request_params = array(
+                'message' => STRING_WISH_LIST,
+                'peer_id' => $user_id,
+                'access_token' => BOT_TOKEN,
+                'random_id' => '0',
+                'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
+                'v' => '5.131',
+            );
+        } else {
+            $request_params = array(
+                'message' => STRING_WISH_LIST,
+                'peer_id' => $user_id,
+                'access_token' => BOT_TOKEN,
+                'random_id' => '0',
+                'keyboard' => json_encode(ENTER_KEYBOARD, JSON_UNESCAPED_UNICODE),
+                'v' => '5.131',
+            );
+        }
 
         $get_params = http_build_query($request_params);
         file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);

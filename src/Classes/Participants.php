@@ -103,4 +103,26 @@ class Participants
         return -1;
     }
 
+    public function isCreator(){
+        log_msg("In function update participants");
+
+        $sqlQuery = "SELECT is_creator
+                    FROM 
+                    " . $this->db_table . " 
+                    WHERE user_id= $this->user_id
+                    AND   group_id = '$this->group_id';";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->is_creator=$row['is_creator'];
+            return $this->is_creator;
+        }
+
+        return false;
+    }
+
 }
