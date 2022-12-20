@@ -71,20 +71,32 @@ class Users
 
         $stmt = $this->conn->prepare($sqlQuery);
 
-
-        $result = $this->mysqli->query($sqlQuery);
         if ($stmt->execute()) {
-            log_msg("COUNT");
-            $count = $result->num_rows;
-            log_msg($count);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
             $this->state_number=$row['state_number'];
-            log_msg($this->state_number);
-            return $count;
+            return true;
         }
 
         return false;
     }
+
+    public function getCount()
+    {
+        $sqlQuery = "SELECT COUNT(*) FROM
+                    " . $this->db_table . " 
+                    WHERE id=$this->id;";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            log_msg("COUNT");
+            $count = $stmt->fetchColumn();
+            log_msg($count);
+            return $count;
+        }
+    }
+
 
 }

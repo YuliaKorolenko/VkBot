@@ -55,7 +55,7 @@ function callback_events()
             $user = new Users($db);
             $user->id = $data->object->message->from_id;
 
-            if ($user->getNumberState() < 1){
+            if ($user->getCount() < 1){
                 $user->state_number=START_STATE;
                 $user->create();
             }
