@@ -3,10 +3,9 @@
 namespace App\States;
 
 use App\Classes\Participants;
-use App\Classes\Users;
 use App\Databases\Database;
 
-class AddWishListState implements State
+class AddParticipantState implements State
 {
 
     public function __construct()
@@ -35,33 +34,35 @@ class AddWishListState implements State
 
     public function _do($data)
     {
-        log_msg("In Do WISHLIST");
         $user_id = $data->object->message->from_id;
-
         $database = new Database();
-
         $db = $database->getConnection();
 
         $participant = new Participants($db);
-        $participant->user_id = $user_id;
-        $participant->wish_list = $data->object->message->text;
-        $participant->is_active = 1;
+        $participant->user_id=$user_id;
+        $participant->group_id=$data->object->message->text;
+        $participant->is_active=1;
+        $participant->is_creator=0;
+        $participant->wish_list="";
 
-        $participant->update();
+        if ($participant->create()) {
+            log_msg("Participant created successfully.");
+        } else {
+            log_msg("Participant could not be created.");
+        }
+
 
         $request_params = array(
-            'message' => STRING_WISH_LIST,
+            'message' =>  STRING_ADD,
             'peer_id' => $user_id,
             'access_token' => BOT_TOKEN,
             'random_id' => '0',
-            'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
+            'keyboard' => json_encode(ENTER_KEYBOARD, JSON_UNESCAPED_UNICODE),
             'v' => '5.131',
         );
 
         $get_params = http_build_query($request_params);
         file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
-
-
     }
 
     public function _error($data)
@@ -71,11 +72,11 @@ class AddWishListState implements State
 
     public function getName(): string
     {
-        return ADD_WISH_LIST_STATE;
+        return ADD_PARTICIPANT_STATE;
     }
 
     public function getPreviousNames(): array
     {
-        return array(ADD_GROUP);
+        return array();
     }
 }

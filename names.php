@@ -25,6 +25,7 @@ const ADD_GROUP = "Добавить группу";
 const ADD_WISH_LIST_STATE = "Добавить вишлист";
 const OUT_STATE = "Выйти";
 const ENTER_GROUP_STATE = "Войти в группу";
-
 const CHECK_ENTER_STATE = "Проверка";
+
+const ADD_PARTICIPANT_STATE = "Добавить участника";
 

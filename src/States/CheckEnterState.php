@@ -60,6 +60,9 @@ class CheckEnterState implements State
                 'keyboard' => json_encode(MAIN_KEYBOARD, JSON_UNESCAPED_UNICODE),
                 'v' => '5.131',
             );
+
+            $add = new AddParticipantState();
+            $add->changeState($data);
         }
 
         $get_params = http_build_query($request_params);
