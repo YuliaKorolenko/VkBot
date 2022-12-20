@@ -10,6 +10,7 @@ class AddParticipantState implements State
 
     public function __construct()
     {
+        log_msg("AddPARTICIPANt");
     }
 
     public function changeState($data)

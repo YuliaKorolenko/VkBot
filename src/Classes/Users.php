@@ -74,10 +74,13 @@ class Users
 
 
         if ($stmt->execute()) {
+            log_msg("COUNT");
+            $count = $stmt->rowCount;
+            log_msg($count);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->state_number=$row['state_number'];
-            return true;
+            return $count;
         }
 
         return false;
