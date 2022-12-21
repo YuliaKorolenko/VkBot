@@ -23,12 +23,7 @@ class AddGroupState extends BaseState implements State
         $db = $database->getConnection();
 
 
-        $item = new Group($db);
-        $item->id = $data->object->message->text;
-        $item->name = "empty";
-        $item->reg_open = 1;
-        $item->price = 0;
-        $item->created = date('Y-m-d H:i:s');
+        $item = new Group($db, $data->object->message->text, 1);
 
         if ($item->create()) {
             log_msg("Group created successfully.");

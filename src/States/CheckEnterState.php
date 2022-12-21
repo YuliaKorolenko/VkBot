@@ -23,8 +23,8 @@ class CheckEnterState extends BaseState  implements State
         $database = new Database();
         $db = $database->getConnection();
 
-        $group = new Group($db);
-        $group->id = $data->object->message->text;
+        $group = new Group($db, $data->object->message->text);
+
         $user_id = $data->object->message->from_id;
 
         if ($group->find() == 1) {

@@ -41,3 +41,5 @@ const ENTER_KEYBOARD = [
             "label" => "Выйти"],
             "color" => "secondary"],
     ]]];
+
+const ERROR_KEYBOARD = [];

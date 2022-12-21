@@ -67,11 +67,12 @@ function callback_events()
             log_msg($user->state_number);
 
             $state = $collectStates->getState($data->object->message->text);
+            $prevState = $collectStates->getState($user->state_number);
             if ($state != null) {
                 if (in_array($user->state_number, $state->getPreviousNames())){
                     $state->changeState($data);
                 } else {
-                    log_msg("problem");
+                    $prevState->_error($data);
                 }
             } else {
                 log_msg("State number of user");

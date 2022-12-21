@@ -15,9 +15,14 @@ class Group
     public $price;
     public $created;
 
-    public function __construct($db)
+    public function __construct($db, $id, $reg_open=0)
     {
         $this->conn = $db;
+        $this->price  = 0;
+        $this->created = date('Y-m-d H:i:s');
+        $this->id = $id;
+        $this->name = "empty";
+        $this->reg_open = $reg_open;
     }
 
     public function create()
@@ -42,8 +47,6 @@ class Group
 
     public function find()
     {
-        log_msg("In function create");
-
         $sqlQuery = "SELECT COUNT(*) 
                      FROM " . $this->db_table . " 
                      WHERE id = '$this->id';";
@@ -52,9 +55,7 @@ class Group
         $stmt = $this->conn->prepare($sqlQuery);
 
         if ($stmt->execute()) {
-            log_msg("COUNT");
             $count = $stmt->fetchColumn();
-            log_msg($count);
             return $count;
         }
 
