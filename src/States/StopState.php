@@ -49,6 +49,14 @@ class StopState extends BaseState implements State
             vkApiSend($santa_user_id, LINK . $ward_user_id . STOP . $ward["wish_list"], MAIN_KEYBOARD);
         }
 
+        $database = new Database();
+        $db = $database->getConnection();
+
+
+        $participant->is_active = 0;
+
+        $participant->changeActive();
+
         $this->change($data, START_STATE);
 
     }
