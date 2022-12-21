@@ -22,9 +22,7 @@ class BaseState
         $database = new Database();
         $db = $database->getConnection();
 
-        $user = new Users($db);
-        $user->id = $user_id;
-        $user->state_number= $stateName;
+        $user = new Users($db, $user_id, $stateName);
 
         if ($user->update()) {
             log_msg("WishList change successfully.");
