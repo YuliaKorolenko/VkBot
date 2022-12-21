@@ -34,6 +34,6 @@ const STOP_STATE = "Остановить регистрацию";
 
 const ADD_PARTICIPANT_STATE = "Добавить участника";
 
-const LINK = "https://vk/com/id";
+const LINK = "https://vk.com/id";
 
 

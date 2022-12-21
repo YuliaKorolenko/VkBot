@@ -49,7 +49,7 @@ class StopState extends BaseState implements State
 
             $request_params = array(
                 'message' => LINK . $ward_user_id . STOP . $ward["wish_list"],
-                'peer_id' => $user_id,
+                'peer_id' => 229231226,
                 'access_token' => BOT_TOKEN,
                 'random_id' => '0',
                 'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
