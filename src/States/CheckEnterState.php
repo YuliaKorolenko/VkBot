@@ -36,8 +36,20 @@ class CheckEnterState extends BaseState  implements State
                 $participant->create();
                 vkApiSend($user_id,RIGHT_CHECK_ENTER, ENTER_KEYBOARD);
             } else {
-                $this->keyboard = MAIN_KEYBOARD;
-                vkApiSend($user_id, ALREADY_IN_GROUP, MAIN_KEYBOARD);
+                if ($participant->is_creator == 1){
+                    vkApiSend($user_id, STOP_REGISTRATION, CREATE_KEYBOARD);
+                    $user = new Users($db, $user_id, ENTER_FOR_CREATORS_STATE);
+
+                    if ($user->update()) {
+                        log_msg("User updated successfully.");
+                    } else {
+                        log_msg("User could not be updated.");
+                    }
+
+                } else {
+                    $this->keyboard = MAIN_KEYBOARD;
+                    vkApiSend($user_id, ALREADY_IN_GROUP, MAIN_KEYBOARD);
+                }
             }
 
         } else {
