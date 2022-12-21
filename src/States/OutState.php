@@ -25,7 +25,7 @@ class OutState extends BaseState  implements State
 
         $participant = new Participants($db, $user_id, "", 0, "", 0);
 
-        $participant->changeActive();
+        $participant->changeActive(0);
 
         vkApiSend($user_id, STRING_OUT_STATE, MAIN_KEYBOARD);
     }

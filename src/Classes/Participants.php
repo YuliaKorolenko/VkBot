@@ -75,13 +75,13 @@ class Participants
         return false;
     }
 
-    public function changeActive()
+    public function changeActive($active_number)
     {
         log_msg("In function update participants");
 
         $sqlQuery = "UPDATE 
                     " . $this->db_table . " 
-                    SET is_active = 0
+                    SET is_active = $active_number
                     WHERE user_id = $this->user_id;";
 
         log_msg($sqlQuery);

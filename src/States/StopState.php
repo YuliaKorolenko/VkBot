@@ -50,7 +50,7 @@ class StopState extends BaseState implements State
 
             $santa_participant = new Participants($db, $santa_user_id, "", 0, "", 0);
             $santa_participant->is_active = 0;
-            $santa_participant->changeActive();
+            $santa_participant->changeActive(0);
 
             $this->change($data, START_STATE);
         }
