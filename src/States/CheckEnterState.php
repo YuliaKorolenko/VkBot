@@ -29,12 +29,9 @@ class CheckEnterState extends BaseState  implements State
 
         if ($group->find() == 1) {
 
-            $participant = new Participants($db);
-            $participant->user_id = $user_id;
-            $participant->group_id = $data->object->message->text;
-            $participant->is_active = 1;
-            $participant->wish_list = "";
-            $participant->is_creator = 0;
+            $participant =
+                new Participants($db, $user_id, $data->object->message->text, 1, ", 0");
+
 
             if ($participant->find() == 0) {
                 $participant->create();

@@ -22,7 +22,6 @@ class AddGroupState extends BaseState implements State
         $database = new Database();
         $db = $database->getConnection();
 
-
         $item = new Group($db, $data->object->message->text, 1);
 
         if ($item->create()) {
@@ -31,12 +30,8 @@ class AddGroupState extends BaseState implements State
             log_msg("Group could not be created.");
         }
 
-        $participant = new Participants($db);
-        $participant->user_id=$user_id;
-        $participant->group_id=$data->object->message->text;
-        $participant->is_active=1;
-        $participant->is_creator=1;
-        $participant->wish_list="";
+        $participant =
+            new Participants($db, $user_id, $data->object->message->text, 1, "", 1);
 
         if ($participant->create()) {
             log_msg("Participant created successfully.");

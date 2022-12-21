@@ -24,8 +24,8 @@ class StopState extends BaseState implements State
         $database = new Database();
         $db = $database->getConnection();
 
-        $participant = new Participants($db);
-        $participant->user_id = $user_id;
+        $participant = new Participants($db, $user_id, "", 0, "", 0);
+
         $participant->findGroupIdByCreator();
         log_msg($participant->group_id);
         $n = $participant->findPartCount();
@@ -49,12 +49,9 @@ class StopState extends BaseState implements State
             vkApiSend($santa_user_id, LINK . $ward_user_id . STOP . $ward["wish_list"], MAIN_KEYBOARD);
         }
 
-        $database = new Database();
-        $db = $database->getConnection();
 
 
         $participant->is_active = 0;
-
         $participant->changeActive();
 
         $this->change($data, START_STATE);
@@ -73,6 +70,6 @@ class StopState extends BaseState implements State
 
     public function getPreviousNames(): array
     {
-        return array(ADD_WISH_LIST_STATE, START_STATE);
+        return array(ADD_WISH_LIST_STATE);
     }
 }

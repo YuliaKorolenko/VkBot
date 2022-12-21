@@ -22,9 +22,14 @@ class Participants
     public $wish_list;
     public $is_active;
 
-    public function __construct($db)
+    public function __construct($db, $user_id, $group_id, $is_creator, $wish_list, $is_active)
     {
         $this->conn = $db;
+        $this->user_id = $user_id;
+        $this->group_id = $group_id;
+        $this->is_creator = $is_creator;
+        $this->wish_list = $wish_list;
+        $this->is_active = $is_active;
     }
 
 

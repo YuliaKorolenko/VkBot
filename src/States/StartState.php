@@ -18,7 +18,6 @@ class StartState extends BaseState implements State
     public function _do($data)
     {
         $user_id = $data->object->message->from_id;
-
         vkApiSend($user_id, STRING_START, MAIN_KEYBOARD);
     }
 

@@ -23,9 +23,7 @@ class OutState extends BaseState  implements State
         $database = new Database();
         $db = $database->getConnection();
 
-        $participant = new Participants($db);
-        $participant->user_id = $user_id;
-        $participant->is_active = 0;
+        $participant = new Participants($db, $user_id, "", 0, "", 0);
 
         $participant->changeActive();
 
