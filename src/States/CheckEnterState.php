@@ -36,7 +36,7 @@ class CheckEnterState extends BaseState  implements State
                 $participant->create();
                 vkApiSend($user_id,RIGHT_CHECK_ENTER, ENTER_KEYBOARD);
             } else {
-                if ($participant->is_creator == 1){
+                if ($participant->isCreator() == 1){
                     vkApiSend($user_id, STOP_REGISTRATION, CREATE_KEYBOARD);
                     $user = new Users($db, $user_id, ENTER_FOR_CREATORS_STATE);
 
