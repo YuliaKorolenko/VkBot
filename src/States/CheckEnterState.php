@@ -36,10 +36,12 @@ class CheckEnterState extends BaseState  implements State
                 $participant->create();
                 vkApiSend($user_id,RIGHT_CHECK_ENTER, ENTER_KEYBOARD);
             } else {
+                $this->keyboard = MAIN_KEYBOARD;
                 vkApiSend($user_id, ALREADY_IN_GROUP, MAIN_KEYBOARD);
             }
 
         } else {
+            $this->keyboard = MAIN_KEYBOARD;
             vkApiSend($user_id, WRONG_CHECKER_ENTER, MAIN_KEYBOARD);
         }
 
