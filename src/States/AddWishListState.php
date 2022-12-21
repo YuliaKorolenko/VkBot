@@ -21,6 +21,7 @@ class AddWishListState extends BaseState implements State
 
         $database = new Database();
         $db = $database->getConnection();
+
         $participant =
             new Participants($db, $user_id, "", 0, $data->object->message->text, 1);
 

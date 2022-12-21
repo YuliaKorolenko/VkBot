@@ -16,9 +16,11 @@ class Users
     public $id;
     public $state_number;
 
-    public function __construct($db)
+    public function __construct($db, $id, $state_number)
     {
         $this->conn = $db;
+        $this->id = $id;
+        $this->state_number = $state_number;
     }
 
     public function create()
