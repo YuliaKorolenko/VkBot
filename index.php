@@ -55,8 +55,7 @@ function callback_events()
             $database = new Database();
             $db = $database->getConnection();
 
-            $user = new Users($db);
-            $user->id = $data->object->message->from_id;
+            $user = new Users($db, $data->object->message->from_id, "");
 
             if ($user->getCount() < 1){
                 $user->state_number=START_STATE;
