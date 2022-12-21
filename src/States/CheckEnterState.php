@@ -30,8 +30,7 @@ class CheckEnterState extends BaseState  implements State
         if ($group->find() == 1) {
 
             $participant =
-                new Participants($db, $user_id, $data->object->message->text, 1, ", 0");
-
+                new Participants($db, $user_id, $data->object->message->text, 0, "", 0);
 
             if ($participant->find() == 0) {
                 $participant->create();
