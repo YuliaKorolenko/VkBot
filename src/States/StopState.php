@@ -46,7 +46,7 @@ class StopState extends BaseState implements State
             $ward = $participants[$arr[($i + 1) % $n]];
             $ward_user_id = intval($ward["user_id"]);
 
-            vkApiSend($santa_user_id, LINK . $ward_user_id . STOP . $ward["wish_list"], CREATE_KEYBOARD);
+            vkApiSend($santa_user_id, LINK . $ward_user_id . STOP . $ward["wish_list"], MAIN_KEYBOARD);
         }
 
         $this->change($data, START_STATE);
