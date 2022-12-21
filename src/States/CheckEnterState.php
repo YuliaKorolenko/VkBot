@@ -30,7 +30,7 @@ class CheckEnterState extends BaseState  implements State
         if ($group->find() == 1) {
 
             $participant =
-                new Participants($db, $user_id, $data->object->message->text, 0, "", 0);
+                new Participants($db, $user_id, $data->object->message->text, 0, "", 1);
 
             if ($participant->find() == 0) {
                 $participant->create();
@@ -46,9 +46,7 @@ class CheckEnterState extends BaseState  implements State
         }
 
         if ($this->keyboard == MAIN_KEYBOARD) {
-            $user = new Users($db);
-            $user->id = $user_id;
-            $user->state_number = START_STATE;
+            $user = new Users($db, $user_id, START_STATE);
 
             if ($user->update()) {
                 log_msg("User updated successfully.");
