@@ -40,7 +40,7 @@ class CheckEnterState extends BaseState  implements State
                     vkApiSend($user_id, STOP_REGISTRATION, CREATE_KEYBOARD);
                     $user = new Users($db, $user_id, ENTER_FOR_CREATORS_STATE);
 
-                    $participant->changeActive(1);
+                    $participant->changeActiveByGroup(1);
                     if ($user->update()) {
                         log_msg("User updated successfully.");
                     } else {

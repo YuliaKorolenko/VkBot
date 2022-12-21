@@ -95,6 +95,27 @@ class Participants
         return false;
     }
 
+    public function changeActiveByGroup($active_number)
+    {
+        log_msg("In function update participants");
+
+        $sqlQuery = "UPDATE 
+                    " . $this->db_table . " 
+                    SET is_active = $active_number
+                    WHERE user_id = $this->user_id
+                    AND group_id = '$this->group_id';";
+
+        log_msg($sqlQuery);
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function find()
     {
         log_msg("In function update participants");

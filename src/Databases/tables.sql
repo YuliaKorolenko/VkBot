@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
 
 DROP TABLE `Users`;
 
+DROP TABLE `Participants`;
+
 
 CREATE TABLE IF NOT EXISTS `Users` (
     `id` INT NOT NULL,
@@ -51,9 +53,3 @@ CREATE TABLE IF NOT EXISTS `Participants` (
     FOREIGN KEY (`group_id`) REFERENCES `MyGroup`(`id`) ON DELETE CASCADE,
     FOREIGN KEY (`user_id`) REFERENCES `Users`(`id`) ON DELETE CASCADE
     )ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
-
-INSERT INTO
-    `Participants`
-(user_id, group_id, is_creator, wish_list, is_active)
-VALUES (229231226, 'Сантамой' , 1, '', 1);
