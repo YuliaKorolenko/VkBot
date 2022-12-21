@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 require_once 'global.php';
 require_once 'keyboards.php';
 require_once 'names.php';
