@@ -42,15 +42,12 @@ class StopState extends BaseState implements State
         for ($i = 0; $i < $n; $i++) {
             $santa = $participants[$arr[$i]];
             $santa_user_id = intval($santa["user_id"]);
-            
+
             $ward = $participants[$arr[($i + 1) % $n]];
             $ward_user_id = intval($ward["user_id"]);
 
             vkApiSend($santa_user_id, LINK . $ward_user_id . STOP . $ward["wish_list"], CREATE_KEYBOARD);
-
-
-            $get_params = http_build_query($request_params);
-            file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
+            
 
         }
 
