@@ -192,7 +192,8 @@ class Participants
                     FROM 
                     " . $this->db_table . " 
                     WHERE user_id= $this->user_id
-                    AND   is_creator = 1;";
+                    AND   is_creator = 1
+                    AND   is_active  = 1;";
 
         log_msg($sqlQuery);
 
