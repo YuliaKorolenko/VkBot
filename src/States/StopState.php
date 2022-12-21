@@ -47,8 +47,6 @@ class StopState extends BaseState implements State
             $ward_user_id = intval($ward["user_id"]);
 
             vkApiSend($santa_user_id, LINK . $ward_user_id . STOP . $ward["wish_list"], CREATE_KEYBOARD);
-            
-
         }
 
         $this->change($data, START_STATE);

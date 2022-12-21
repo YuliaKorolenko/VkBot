@@ -5,6 +5,7 @@ require_once 'keyboards.php';
 require_once 'names.php';
 
 function vkApiSend($peer_id, $message, $keyboard){
+    log_msg("InVKAPI");
     $request_params = array(
         'message' =>$message,
         'peer_id' => $peer_id,
