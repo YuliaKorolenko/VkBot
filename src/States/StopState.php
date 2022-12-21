@@ -25,6 +25,7 @@ class StopState extends BaseState implements State
         $db = $database->getConnection();
 
         $participant = new Participants($db, $user_id, "", 0, "", 0);
+        $participant->changeActive(1);
 
         $participant->findGroupIdByCreator();
         log_msg($participant->group_id);
