@@ -17,7 +17,6 @@ class AddWishListState extends BaseState implements State
 
     public function _do($data)
     {
-        log_msg("In Do WISHLIST");
         $user_id = $data->object->message->from_id;
 
         $database = new Database();
@@ -33,29 +32,10 @@ class AddWishListState extends BaseState implements State
         $participant->update();
 
         if ($participant->is_creator == 1) {
-            $request_params = array(
-                'message' => STRING_WISH_LIST,
-                'peer_id' => $user_id,
-                'access_token' => BOT_TOKEN,
-                'random_id' => '0',
-                'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
-                'v' => '5.131',
-            );
+            vkApiSend($user_id, STRING_WISH_LIST, CREATE_KEYBOARD);
         } else {
-            $request_params = array(
-                'message' => STRING_WISH_LIST,
-                'peer_id' => $user_id,
-                'access_token' => BOT_TOKEN,
-                'random_id' => '0',
-                'keyboard' => json_encode(ENTER_KEYBOARD, JSON_UNESCAPED_UNICODE),
-                'v' => '5.131',
-            );
+            vkApiSend($user_id, STRING_WISH_LIST, ENTER_KEYBOARD);
         }
-
-        $get_params = http_build_query($request_params);
-        file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
-
-
     }
 
     public function _error($data)

@@ -49,18 +49,7 @@ class AddGroupState extends BaseState implements State
             log_msg("Participant could not be created.");
         }
 
-
-        $request_params = array(
-            'message' =>  STRING_ADD,
-            'peer_id' => $user_id,
-            'access_token' => BOT_TOKEN,
-            'random_id' => '0',
-            'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
-            'v' => '5.131',
-        );
-
-        $get_params = http_build_query($request_params);
-        file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
+        vkApiSend($user_id, STRING_ADD, CREATE_KEYBOARD);
     }
 
     public function getName(): string

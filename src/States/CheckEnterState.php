@@ -37,29 +37,15 @@ class CheckEnterState extends BaseState  implements State
             $participant->is_creator = 0;
 
             if ($participant->find() == 0) {
-                log_msg("newPart");
                 $participant->create();
-                $this->keyboard = ENTER_KEYBOARD;
-                $this->phrase = RIGHT_CHECK_ENTER;
+                vkApiSend($user_id,RIGHT_CHECK_ENTER, ENTER_KEYBOARD);
             } else {
-                log_msg("oldPart");
-                $this->keyboard = MAIN_KEYBOARD;
-                $this->phrase = ALREADY_IN_GROUP;
+                vkApiSend($user_id, ALREADY_IN_GROUP, MAIN_KEYBOARD);
             }
 
         } else {
-            $this->keyboard = MAIN_KEYBOARD;
-            $this->phrase = WRONG_CHECKER_ENTER;
+            vkApiSend($user_id, WRONG_CHECKER_ENTER, MAIN_KEYBOARD);
         }
-
-        $request_params = array(
-            'message' => $this->phrase,
-            'peer_id' => $user_id,
-            'access_token' => BOT_TOKEN,
-            'random_id' => '0',
-            'keyboard' => json_encode($this->keyboard, JSON_UNESCAPED_UNICODE),
-            'v' => '5.131',
-        );
 
         if ($this->keyboard == MAIN_KEYBOARD) {
             $user = new Users($db);
@@ -72,9 +58,6 @@ class CheckEnterState extends BaseState  implements State
                 log_msg("User could not be updated.");
             }
         }
-
-        $get_params = http_build_query($request_params);
-        file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
     }
 
     public
