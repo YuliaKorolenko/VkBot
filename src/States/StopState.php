@@ -49,14 +49,16 @@ class StopState extends BaseState implements State
 
             $request_params = array(
                 'message' => LINK . $ward_user_id . STOP . $ward["wish_list"],
-                'peer_id' => 81570330,
+                'peer_id' => $user_id,
                 'access_token' => BOT_TOKEN,
                 'random_id' => '0',
-                'keyboard' => json_encode($this->keyboard, JSON_UNESCAPED_UNICODE),
+                'keyboard' => json_encode(CREATE_KEYBOARD, JSON_UNESCAPED_UNICODE),
                 'v' => '5.131',
             );
+
             $get_params = http_build_query($request_params);
             file_get_contents('https://api.vk.com/method/messages.send?' . $get_params);
+
         }
 
         $this->change($data, START_STATE);
