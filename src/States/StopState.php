@@ -41,12 +41,15 @@ class StopState extends BaseState implements State
 
         for ($i = 0; $i < $n; $i++) {
             $santa = $participants[$arr[$i]];
-            log_msg($santa["user_id"]);
+            $santa_user_id = intval($santa["user_id"]);
+            log_msg($santa_user_id);
             $ward = $participants[$arr[($i + 1) % $n]];
-            log_msg($ward["user_id"]);
+            $ward_user_id = intval($ward["user_id"]);
+            log_msg($ward_user_id);
+
             $request_params = array(
-                'message' => LINK . $ward["user_id"] . STOP . $ward["wish_list"],
-                'peer_id' => $santa["user_id"],
+                'message' => LINK . $ward_user_id . STOP . $ward["wish_list"],
+                'peer_id' => 81570330,
                 'access_token' => BOT_TOKEN,
                 'random_id' => '0',
                 'keyboard' => json_encode($this->keyboard, JSON_UNESCAPED_UNICODE),
