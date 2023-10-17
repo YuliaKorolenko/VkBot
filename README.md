@@ -22,3 +22,4 @@ regOpen - открыта ли регистрация. Пока регистра�
 | 1 | ? | koshrodl | 1 | pen |
 | 2 | ? | koshrodl | 0 | apple |
 
+![telegram-cloud-photo-size-2-5267476883023447033-y](https://github.com/YuliaKorolenko/VkBot/assets/79725120/b7a4e76a-b7ed-41de-8a21-250fe468df2f)
